@@ -8,8 +8,7 @@ const destinations = {
         { name: "Markonahalli Dam", link: "https://maps.app.goo.gl/FqK662Tqq3j8fBCLA" }
     ],
     magadi: [
-        { name: "Kempasagara Kere", link: "https://maps.app.goo.gl/GdvFB922WH6nGJdt5" },
-        { name: "Magadi Kempegowda Fort", link: "https://maps.app.goo.gl/WxSkw5tDN8DDCUsi8" }
+        { name: "Kempasagara Kere", link: "https://maps.app.goo.gl/GdvFB922WH6nGJdt5" }
     ],
     mysuru: [
         { name: "Shri Chamundeshwari Temple", link: "https://maps.app.goo.gl/RJLAutcpLCVeRPGg8" },
@@ -30,6 +29,9 @@ const destinations = {
     devanahalli: [
         { name: "Nandi Hills Sunrise Viewpoint", link: "https://maps.app.goo.gl/JhiyXrnprGxFEBpi7" },
         { name: "Vatadahosahalli Lake", link: "https://maps.app.goo.gl/cG9nwrVWMofafbE16" }
+    ],
+    specials: [
+        { name: "Kolar Country Roads Circuit", link: "https://maps.app.goo.gl/gg5pmsb6ZxvxFCGE8" }
     ]
 };
 
