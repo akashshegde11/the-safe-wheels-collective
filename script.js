@@ -8,7 +8,19 @@ const destinations = {
         { name: "Markonahalli Dam", link: "https://maps.app.goo.gl/FqK662Tqq3j8fBCLA" }
     ],
     magadi: [
-        { name: "Kempasagara Kere", link: "https://maps.app.goo.gl/GdvFB922WH6nGJdt5" }
+        { name: "Kempasagara Kere", link: "https://maps.app.goo.gl/GdvFB922WH6nGJdt5" },
+        { name: "Shri Muttarayana Swami Betta", link: "https://maps.app.goo.gl/9ELzY2zxRLwitbfW6" },
+        { name: "Shri Bande Yoganarasimha Swami Gudi", link: "https://maps.app.goo.gl/iX6Vy73skYvyEJ4J9" },
+        { name: "Bettada Shri Kambada Yoganarasimha Swamy Temple", link: "https://maps.app.goo.gl/y77Ns8bxz9ouGerT7" },
+        { name: "Shri Ranganatha Swamy Temple", link: "https://maps.app.goo.gl/kLY85y2i1yFv4Z7T8" },
+        { name: "Shri Someshwara Swamy Temple", link: "https://maps.app.goo.gl/7dbfgU7gBM71paz2A" },
+        { name: "Huttaridurga Sunrise Point", link: "https://maps.app.goo.gl/1gpJ3h7nH2Zs3BUd7" },
+        { name: "Shri Shankareshwara Bettada Gudi", link: "https://maps.app.goo.gl/qxxfHb1dBsLDzohf8" },
+        { name: "Honnamachanahalli Kere", link: "https://maps.app.goo.gl/ez6u6aKSUVxGfAsD9" },
+        { name: "Quarry Sunset Point", link: "https://maps.app.goo.gl/uHkb1aboHcgBBxaW6" },
+        { name: "Arakavati River View Point 1", link: "https://maps.app.goo.gl/EJdWvYi2t3YgeQnc6" },
+        { name: "Tippagondanahalli Dam", link: "https://maps.app.goo.gl/xDqUK1xDqVSD7Kg58" },
+        { name: "Solo Hills", link: "https://maps.app.goo.gl/SRpMTwZhcGvZpaVF7" }
     ],
     mysuru: [
         { name: "Shri Chamundeshwari Temple", link: "https://maps.app.goo.gl/RJLAutcpLCVeRPGg8" },
