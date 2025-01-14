@@ -1,12 +1,22 @@
 body {
     font-family: 'Montserrat', Arial, sans-serif;
-    margin: 5%;
+    /* margin: 5%;
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #DCDCDC; */
+    margin: 5%;
+    padding: 0;
     background-color: #DCDCDC;
+    color: #333;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
 header {
@@ -19,8 +29,21 @@ footer {
     margin-bottom: 10px;
 }
 
+h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 1.2rem;
+    color: #555;
+}
+
 main {
     text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 select {
@@ -28,6 +51,10 @@ select {
     padding: 10px;
     font-size: 16px;
     font-family: 'Montserrat', Arial, sans-serif;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 #destinations-list {
@@ -36,4 +63,31 @@ select {
 
 .destination {
     margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: #f0f0f0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.destination:hover {
+    transform: translateY(-2px);
+}
+
+.destination a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.destination a:hover {
+    text-decoration: underline;
+}
+
+.icon {
+    font-size: 1rem;
+    margin-left: 5px;
 }

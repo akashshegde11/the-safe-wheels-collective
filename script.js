@@ -153,19 +153,20 @@ const destinations = {
         { name: "Yagachi Dam Belur", link: "https://maps.app.goo.gl/wKeJJW9eM5NFoC6x7" }
     ],
     magadi: [
-        { name: "Arakavati River View Point 1", link: "https://maps.app.goo.gl/EJdWvYi2t3YgeQnc6" },
+        { name: "Arakavati River View Point 1", link: "https://maps.app.goo.gl/EJdWvYi2t3YgeQnc6", icons: ["fa-motorcycle", "fa-road-circle-exclamation"] },
         { name: "Bettada Shri Kambada Yoganarasimha Swamy Temple", link: "https://maps.app.goo.gl/y77Ns8bxz9ouGerT7" },
         { name: "Honnamachanahalli Kere", link: "https://maps.app.goo.gl/ez6u6aKSUVxGfAsD9" },
-        { name: "Huttaridurga Sunrise Point", link: "https://maps.app.goo.gl/1gpJ3h7nH2Zs3BUd7" },
-        { name: "Kempasagara Kere", link: "https://maps.app.goo.gl/GdvFB922WH6nGJdt5" },
+        { name: "Huttaridurga Sunrise Point", link: "https://maps.app.goo.gl/1gpJ3h7nH2Zs3BUd7", icons: ["fa-hiking"] },
+        { name: "Kempasagara Kere", link: "https://maps.app.goo.gl/GdvFB922WH6nGJdt5", icons: ["fa-motorcycle"] },
+        { name: "Kempegowda Fort", link: "https://maps.app.goo.gl/EiW3TAo7jHYvrcYY7", icons: ["fa-motorcycle", "fa-car"] },
         { name: "Quarry Sunset Point", link: "https://maps.app.goo.gl/uHkb1aboHcgBBxaW6" },
         { name: "Shri Bande Yoganarasimha Swami Gudi", link: "https://maps.app.goo.gl/iX6Vy73skYvyEJ4J9" },
         { name: "Shri Muttarayana Swami Betta", link: "https://maps.app.goo.gl/9ELzY2zxRLwitbfW6" },
-        { name: "Shri Ranganatha Swamy Temple", link: "https://maps.app.goo.gl/kLY85y2i1yFv4Z7T8" },
+        { name: "Shri Ranganathaswamy Temple", link: "https://maps.app.goo.gl/kLY85y2i1yFv4Z7T8" },
         { name: "Shri Shankareshwara Bettada Gudi", link: "https://maps.app.goo.gl/qxxfHb1dBsLDzohf8" },
         { name: "Shri Someshwara Swamy Temple", link: "https://maps.app.goo.gl/7dbfgU7gBM71paz2A" },
         { name: "Solo Hills", link: "https://maps.app.goo.gl/SRpMTwZhcGvZpaVF7" },
-        { name: "Tippagondanahalli Dam", link: "https://maps.app.goo.gl/xDqUK1xDqVSD7Kg58" }
+        { name: "Tippagondanahalli Dam", link: "https://maps.app.goo.gl/xDqUK1xDqVSD7Kg58", icons: ["fa-xmark", "fa-motorcycle", "fa-car"] }
     ],
     mysuru: [
         { name: "Abbi Falls", link: "https://maps.app.goo.gl/UDUZN3wk2apNyxrv9" },
@@ -516,13 +517,21 @@ const destinationsList = document.getElementById('destinations-list');
 
 exitSelect.addEventListener('change', () => {
     const selectedExit = exitSelect.value;
-    const selectedDestinations = destinations[selectedExit];
+    const selectedDestinations = destinations[selectedExit] || [];
 
     destinationsList.innerHTML = '';
     selectedDestinations.forEach(destination => {
         const destinationElement = document.createElement('div');
         destinationElement.className = 'destination';
-        destinationElement.innerHTML = `<a href="${destination.link}" target="_blank">${destination.name}</a>`;
+
+        const iconsHTML = (destination.icons || [])
+            .map(icon => `<i class="fa ${icon} icon" aria-hidden="true"></i>`)
+            .join(" ");
+
+        destinationElement.innerHTML = `
+            <a href="${destination.link}" target="_blank">${destination.name}</a>
+            ${iconsHTML}
+        `;
         destinationsList.appendChild(destinationElement);
     });
 });
