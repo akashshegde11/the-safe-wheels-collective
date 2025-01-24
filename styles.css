@@ -85,3 +85,8 @@ select {
     font-size: 1rem;
     margin-left: 5px;
 }
+
+.samse-caution-message {
+    width: 400px;
+    color: #ff0000
+}

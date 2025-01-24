@@ -27,11 +27,7 @@ const destinations = {
     {
       name: "Beeranakallu Betta Temple",
       link: "https://maps.app.goo.gl/cgAqywhpVimU332eA",
-      icons: [
-        "fa-hiking",
-        "fa-triangle-exclamation",
-        "fa-gopuram",
-      ],
+      icons: ["fa-hiking", "fa-triangle-exclamation", "fa-gopuram"],
     },
     {
       name: "Bheemana Gudda",
@@ -52,9 +48,10 @@ const destinations = {
       link: "https://maps.app.goo.gl/VjNS8bTh3SgURFqR6",
       icons: ["fa-x", "fa-flag-checkered"],
     },
-    { 
+    {
       name: "Burude Falls",
-      link: "https://maps.app.goo.gl/KmY7brWpjSzU3H6LA", },
+      link: "https://maps.app.goo.gl/KmY7brWpjSzU3H6LA",
+    },
     {
       name: "Chandravalli Archaeological Site",
       link: "https://maps.app.goo.gl/HCcS167uEbkwespd7",
@@ -94,9 +91,9 @@ const destinations = {
     {
       name: "Dharamshala Cricket Stadium",
       link: "https://maps.app.goo.gl/Tx2rnG9Md1L2ezhZ6",
-      icons: [ "fa-baseball-bat-ball", "fa-indian-rupee-sign" ],
+      icons: ["fa-baseball-bat-ball", "fa-indian-rupee-sign"],
     },
-    { 
+    {
       name: "Dholavira Harappan Civilization",
       link: "https://maps.app.goo.gl/8aS6hb4o2Nf1szqP9",
     },
@@ -112,8 +109,8 @@ const destinations = {
       name: "Hampi Lake View Point",
       link: "https://maps.app.goo.gl/3Ezn3VL7Jaq2C5pLA",
     },
-    { 
-      name: "Honnemaradu", 
+    {
+      name: "Honnemaradu",
       link: "https://maps.app.goo.gl/Xo1ayxN3vLBez7hX7",
     },
     {
@@ -239,7 +236,7 @@ const destinations = {
       link: "https://maps.app.goo.gl/SE9k9er8nuWVjap19",
       icons: ["fa-motorcycle", "fa-car", "fa-triangle-exclamation"],
     },
-    { 
+    {
       name: "Sanapur Lake",
       link: "https://maps.app.goo.gl/aVyo1K1tcw1P39ig9",
     },
@@ -275,7 +272,7 @@ const destinations = {
     {
       name: "Shri Adi Shankaracharya Temple Srinagar",
       link: "https://maps.app.goo.gl/7ZFtYjprquXLwE5R6",
-      icons: [ "fa-gopuram", ],
+      icons: ["fa-gopuram"],
     },
     {
       name: "Shri Bangareshwara Temple (Gudnapura)",
@@ -295,7 +292,12 @@ const destinations = {
     {
       name: "Shri Kulle Kalleshwara Temple",
       link: "https://maps.app.goo.gl/QTfa77xnPp1q6MuL6",
-      icons: ["fa-motorcycle", "fa-car", "fa-triangle-exclamation", "fa-gopuram"],
+      icons: [
+        "fa-motorcycle",
+        "fa-car",
+        "fa-triangle-exclamation",
+        "fa-gopuram",
+      ],
     },
     {
       name: "Shri Madhukeshwara Temple (Banavasi)",
@@ -379,7 +381,7 @@ const destinations = {
     {
       name: "Virupaksha Temple Hampi",
       link: "https://maps.app.goo.gl/ZHmyqqc65idx46JD9",
-      icons: [ "fa-gopuram", ],
+      icons: ["fa-gopuram"],
     },
     {
       name: "Yana Rocks",
@@ -2081,6 +2083,40 @@ const destinations = {
     },
     { name: "Zero Point", link: "https://maps.app.goo.gl/bRDYA6YDbFQBA3Uo9" },
   ],
+  ooty: [
+    {
+      name: "Mulli Hairpins",
+      link: "https://maps.app.goo.gl/HdzaEnPRdGyEUDWZ9?g_st=ac",
+      icons: ["fa-motorcycle", "fa-car"],
+    },
+    {
+      name: "Avalanche Viewpoint",
+      link: "https://maps.app.goo.gl/kJz2HrA1HqC9t48G8",
+      icons: ["fa-motorcycle", "fa-car"],
+    },
+    {
+      name: "Emrald Lake Backwaters",
+      link: "https://maps.app.goo.gl/MgRkbRDwWv3XmQmK7",
+      icons: ["fa-motorcycle", "fa-car"],
+    },
+  ],
+  samse: [
+    {
+      name: "KIOCL Ghost Town",
+      link: "https://maps.app.goo.gl/GyFzhXSntNcWiuBJA",
+      icons: ["fa-motorcycle", "fa-car"],
+    },
+    {
+      name: "Bhadra Lakya Confluence Point",
+      link: "https://maps.app.goo.gl/5rKo1NaFuASTYeDs8",
+      icons: ["fa-motorcycle", "fa-car"],
+    },
+    {
+      name: "Gangadikal Trek",
+      link: "https://maps.app.goo.gl/QwqLRDmsobjZRj6GA",
+      icons: ["fa-person-hiking"],
+    },
+  ],
   specials: [
     {
       name: "Bagepalli Region (WMD 2024)",
@@ -2137,6 +2173,17 @@ exitSelect.addEventListener("change", () => {
   const selectedDestinations = destinations[selectedExit] || [];
 
   destinationsList.innerHTML = "";
+  if (selectedExit === "samse") {
+    const cautionMessage = document.createElement("div");
+    cautionMessage.className = 'samse-caution-message'
+    cautionMessage.innerHTML = `<span>
+        <strong>Note:&nbsp;</strong>Please don't advertise these particular
+        locations. Just get in, visit the place and get out. This entire area
+        is very sensitive and if there is overcrowding, the forest department
+        tends to close the destinations for everyone.
+      </span>`;
+    destinationsList.appendChild(cautionMessage);
+  }
   selectedDestinations.forEach((destination) => {
     const destinationElement = document.createElement("div");
     destinationElement.className = "destination";
