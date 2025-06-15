@@ -4,11 +4,15 @@ const destinations = {
       name: "Anashi Falls",
       link: "https://maps.app.goo.gl/qYtjkGiz4tX35APd9",
       icons: ["fa-droplet", "fa-tree", "fa-s"],
+      note: "Scenic waterfalls through a beautiful forest with a lovely twisties section.",
+      distance: 490
     },
     {
       name: "Ancient Shri Jwalamalini Devasthana Nittur",
       link: "https://maps.app.goo.gl/CNnSWgoFufau9xYe8",
       icons: ["fa-gopuram"],
+      note: "Ancient Jain temple with beautiful stone carvings.",
+      distance: 100
     },
     {
       name: "Ancient Shri Venkataramana Swamy Temple Medigeshi",
@@ -407,6 +411,8 @@ const destinations = {
     {
       name: "Aagumbe Sunset Viewpoint",
       link: "https://maps.app.goo.gl/Yr2pT4rqP8UUYKbM7",
+      note: "Beautiful sunset point, looking over the Western Ghats.",
+      distance: 347
     },
     {
       name: "Bappanadu Sri Durga Parameshwari Temple",
@@ -568,6 +574,8 @@ const destinations = {
       name: "Mavanuru Shri Bettada Malleshwara Gudi",
       link: "https://maps.app.goo.gl/rdMWQ7fwqtoVtmAF9",
       icons: ["fa-motorcycle", "fa-car"],
+      note: "Scenic temple situated atop a small hill with plenty of windmills around it.",
+      distance: 160
     },
     {
       name: "Markonahalli Dam",
@@ -2131,26 +2139,136 @@ const destinations = {
 
 const exitSelect = document.getElementById("exit-select");
 const destinationsList = document.getElementById("destinations-list");
+const searchInput = document.getElementById('search-input');
+const sortSelect = document.getElementById('sort-select');
+const paginationControls = document.getElementById('pagination-controls');
+const modalOverlay = document.querySelector('.modal-overlay');
+const noteModal = document.getElementById('note-modal');
+const modalTitle = document.getElementById('modal-title');
+const modalContent = document.getElementById('modal-content');
+const modalIcons = document.getElementById('modal-icons');
 
-exitSelect.addEventListener("change", () => {
-  const selectedExit = exitSelect.value;
-  const selectedDestinations = destinations[selectedExit] || [];
+const itemsPerPage = 25;
+let currentPage = 1;
+let selectedDestinations = destinations.tumakuru;
 
-  destinationsList.innerHTML = "";
-  selectedDestinations.forEach((destination) => {
-    const destinationElement = document.createElement("div");
-    destinationElement.className = "destination";
+// exitSelect.addEventListener("change", () => {
+//   const selectedExit = exitSelect.value;
+//   const selectedDestinations = destinations[selectedExit] || [];
 
-    const iconsHTML = (destination.icons || [])
-      .map((icon) => `<i class="fa ${icon} icon" aria-hidden="true"></i>`)
-      .join(" ");
+//   destinationsList.innerHTML = "";
+//   selectedDestinations.forEach((destination) => {
+//     const destinationElement = document.createElement("div");
+//     destinationElement.className = "destination";
 
-    destinationElement.innerHTML = `
-            <a href="${destination.link}" target="_blank">${destination.name}</a>
-            ${iconsHTML}
+//     const iconsHTML = (destination.icons || [])
+//       .map((icon) => `<i class="fa ${icon} icon" aria-hidden="true"></i>`)
+//       .join(" ");
+
+//     destinationElement.innerHTML = `
+//             <a href="${destination.link}" target="_blank">${destination.name}</a>
+//             ${iconsHTML}
+//         `;
+//     destinationsList.appendChild(destinationElement);
+//   });
+// });
+
+// exitSelect.dispatchEvent(new Event("change"));
+
+function renderDestinations(data) {
+    destinationsList.innerHTML = '';
+    data.forEach((destination, index) => {
+        destinationsList.innerHTML += `
+            <div class="destination">
+                <a href="${destination.link}" target="_blank">${destination.name}</a>
+                <span>${destination.distance !== undefined ? "(" + destination.distance + " km)" : ""}</span>
+                ${destination.note ? `<i class="fa fa-info-circle note-icon" data-index="${index}"></i>` : ''}
+                <div class="icons">
+                    ${(destination.icons || []).map(icon => `<i class="fa ${icon}"></i>`).join(' ')}
+                </div>
+            </div>
         `;
-    destinationsList.appendChild(destinationElement);
-  });
+    });
+    attachNoteListeners(data);
+}
+
+function attachNoteListeners(data) {
+    document.querySelectorAll('.note-icon').forEach(icon => {
+        icon.addEventListener('click', function () {
+            const index = this.dataset.index;
+            const destination = data[index];
+            modalTitle.textContent = destination.name;
+            modalContent.textContent = destination.note;
+            modalIcons.innerHTML = (destination.icons || []).map(icon => `<li><i class="fa ${icon}"></i> ${getIconDescription(icon)}</li>`).join('');
+            modalOverlay.classList.add('show');
+            noteModal.classList.add('show');
+        });
+    });
+}
+
+function getIconDescription(icon) {
+    switch (icon) {
+        case "fa-car": return "Accessible by Car";
+        case "fa-motorcycle": return "Accessible by Motorcycle";
+        case "fa-hiking": return "Trekking Destination";
+        default: return "Unknown";
+    }
+}
+
+function renderPage(page, data) {
+    const startIndex = (page - 1) * itemsPerPage;
+    const paginatedData = data.slice(startIndex, startIndex + itemsPerPage);
+    renderDestinations(paginatedData);
+    updatePaginationControls(page, data.length);
+}
+
+function updatePaginationControls(page, totalItems) {
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    paginationControls.innerHTML = `
+        <button ${page === 1 ? 'disabled' : ''} onclick="renderPage(${page - 1}, selectedDestinations)">Previous</button>
+        <span>Page ${page} of ${totalPages}</span>
+        <button ${page === totalPages ? 'disabled' : ''} onclick="renderPage(${page + 1}, selectedDestinations)">Next</button>
+    `;
+}
+
+function closeModal() {
+    modalOverlay.classList.remove('show');
+    noteModal.classList.remove('show');
+}
+
+exitSelect.addEventListener('change', function () {
+    selectedDestinations = destinations[this.value];
+    renderPage(1, selectedDestinations);
 });
 
-exitSelect.dispatchEvent(new Event("change"));
+searchInput.addEventListener('input', function () {
+    const query = this.value.toLowerCase();
+    const filtered = selectedDestinations.filter(d => (d.name || '').toLowerCase().includes(query) || (d.note || '').toLowerCase().includes(query));
+    renderPage(1, filtered);
+});
+
+sortSelect.addEventListener('change', function () {
+    const sortKey = this.value;
+    const sorted = [...selectedDestinations].sort((a, b) => {
+        if (sortKey === 'name') {
+            return a.name.localeCompare(b.name);
+        } else if (sortKey === 'distance') {
+            return a.distance - b.distance;
+        }
+    });
+    renderPage(1, sorted);
+});
+
+document.getElementById('dark-mode-toggle').addEventListener('change', function () {
+    document.body.classList.toggle('dark-mode', this.checked);
+});
+
+document.getElementById('scroll-top').addEventListener('click', function () {
+    destinationsList.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+document.getElementById('scroll-bottom').addEventListener('click', function () {
+    destinationsList.scrollTo({ top: destinationsList.scrollHeight, behavior: 'smooth' });
+});
+
+renderPage(1, selectedDestinations);

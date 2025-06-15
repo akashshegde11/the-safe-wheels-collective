@@ -14,7 +14,7 @@
         <h1>The Safe Wheels Collective</h1>
         <h2>Locations Repository</h2>
     </header>
-    <main>
+    <!-- <main>
         <label for="exit-select">Select Side:</label>
         <select id="exit-select">
             <option value="tumakuru">Tumakuru Highway</option>
@@ -28,7 +28,70 @@
             <option value="specials">Special Routes/Circuits</option>
         </select>
         <div id="destinations-list"></div>
-    </main>
+    </main> -->
+
+    <div class="container">
+        <div class="controls">
+            <label for="exit-select">Select Side:</label>
+            <select id="exit-select">
+                <option value="tumakuru">Tumakuru Highway</option>
+                <option value="hassana">Hassana Highway</option>
+                <option value="magadi">Magadi Road</option>
+                <option value="mysuru">Mysuru Expressway</option>
+                <option value="kanakapura">Kanakapura Road</option>
+                <option value="hosur">Hosur Highway</option>
+                <option value="hoskote">Hoskote Highway</option>
+                <option value="devanahalli">Devanahalli Highway</option>
+                <option value="specials">Special Routes/Circuits</option>
+            </select>
+            <input type="text" id="search-input" placeholder="Search destinations..." />
+            <select id="sort-select">
+                <option value="name">Sort by Name</option>
+                <option value="distance">Sort by Distance</option>
+            </select>
+        </div>
+        
+        <div id="destinations-list"></div>
+
+        <div id="pagination-controls">
+            <button id="first-page">First</button>
+            <button id="prev-page">Previous</button>
+            <span id="page-info"></span>
+            <button id="next-page">Next</button>
+            <button id="last-page">Last</button>
+        </div>
+
+        <div class="controls">
+            <button id="scroll-top">Move to Top</button>
+            <button id="scroll-bottom">Move to Bottom</button>
+        </div>
+        
+        <div id="icon-legend">
+            <h3>Icon Legend</h3>
+            <ul>
+                <li><i class="fa fa-car"></i> Accessible by Car</li>
+                <li><i class="fa fa-motorcycle"></i> Accessible by Motorcycle</li>
+                <li><i class="fa fa-hiking"></i> Trekking Destination</li>
+            </ul>
+        </div>
+
+        <div class="controls">
+            <label>
+                <input type="checkbox" id="dark-mode-toggle" /> Dark Mode
+            </label>
+        </div>
+        
+    </div>
+
+    <div class="modal-overlay"></div>
+    <div class="modal" id="note-modal">
+        <h3 id="modal-title"></h3>
+        <p id="modal-content"></p>
+        <ul id="modal-icons"></ul>
+        <!-- <button onclick="closeModal()">Close</button> -->
+        <button class="controls" onclick="closeModal()">Close</button>
+    </div>
+
     <script src="script.js"></script>
     <footer>
         <h4>Made in ಬೆಂಗಳೂರು</h4>
