@@ -442,6 +442,13 @@ const destinations = {
       link: "https://maps.app.goo.gl/qXqKKFmQkSWjdYop6"
     },
     {
+      name: "Gangadikal Trek",
+      link: "https://maps.app.goo.gl/QwqLRDmsobjZRj6GA",
+      icons: ["fa-hiking", "fa-triangle-exclamation", "fa-tree"],
+      distance: 350,
+      state: "Karnataka"
+    },
+    {
       name: "Goruru Hemavathi Reservoir",
       link: "https://maps.app.goo.gl/NhTzufYQjeQxtdBw6"
     },
@@ -513,6 +520,14 @@ const destinations = {
       link: "https://maps.app.goo.gl/hiccdHN9Sb86jucq5"
     },
     {
+      name: "KIOCL Ghost Town Samse Kudremukh",
+      link: "https://maps.app.goo.gl/GyFzhXSntNcWiuBJA",
+      icons: ["fa-car", "fa-motorcycle", "fa-tree"],
+      note: "Please don't advertise these particular locations. Just get in, visit the place and get out. This entire area is very sensitive and if there is overcrowding, the forest department tends to close the destinations for everyone.",
+      distance: 350,
+      state: "Karnataka"
+    },
+    {
       name: "Koodlutheertha Falls",
       link: "https://maps.app.goo.gl/z7xSzmkTUwVrg2Sp6"
     },
@@ -562,13 +577,6 @@ const destinations = {
       icons: ["fa-motorcycle", "fa-car"]
     },
     {
-      name: "Mavanuru Shri Bettada Malleshwara Gudi",
-      link: "https://maps.app.goo.gl/rdMWQ7fwqtoVtmAF9",
-      icons: ["fa-motorcycle", "fa-car"],
-      note: "Scenic temple situated atop a small hill with plenty of windmills around it.",
-      distance: 160
-    },
-    {
       name: "Markonahalli Dam",
       link: "https://maps.app.goo.gl/FqK662Tqq3j8fBCLA",
       icons: ["fa-motorcycle", "fa-car"]
@@ -582,6 +590,13 @@ const destinations = {
       name: "Markonahalli Dam Viewpoint",
       link: "https://maps.app.goo.gl/wr81e1PL7e3Kz6Wd7",
       icons: ["fa-motorcycle", "fa-car"]
+    },
+    {
+      name: "Mavanuru Shri Bettada Malleshwara Gudi",
+      link: "https://maps.app.goo.gl/rdMWQ7fwqtoVtmAF9",
+      icons: ["fa-motorcycle", "fa-car"],
+      note: "Scenic temple situated atop a small hill with plenty of windmills around it.",
+      distance: 160
     },
     {
       name: "Mullayyanagiri Betta",
@@ -1488,6 +1503,13 @@ const destinations = {
       link: "https://maps.app.goo.gl/vH8zzEAz3Fqa92Wo6"
     },
     {
+      name: "Emerald Lake Backwaters",
+      link: "https://maps.app.goo.gl/MgRkbRDwWv3XmQmK7",
+      icons: ["fa-car", "fa-motorcycle", "fa-droplet", "fa-tree"],
+      distance: 375,
+      state: "Tamil Nadu"
+    },
+    {
       name: "Gomuki Dam View Point",
       link: "https://maps.app.goo.gl/TcpzMrHhj1bikHrg8"
     },
@@ -1524,6 +1546,13 @@ const destinations = {
     {
       name: "Mettur Dam View Point",
       link: "https://maps.app.goo.gl/A8P5MM39GAisejEG6"
+    },
+    {
+      name: "Mulli Hairpins",
+      link: "https://maps.app.goo.gl/HdzaEnPRdGyEUDWZ9",
+      icons: ["fa-car", "fa-motorcycle", "fa-tree", "fa-s"],
+      distance: 360,
+      state: "Tamil Nadu"
     },
     {
       name: "Murugan Idli Shop",
