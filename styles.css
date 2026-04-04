@@ -168,8 +168,44 @@ footer h4 {
     transform: translateY(0);
 }
 
+/* --- Controls bar (sort/state/distance + buttons) --- */
+.controls-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.controls-bar > * {
+    flex: 1;
+}
+
+.controls-bar button {
+    flex: 1 1 calc(50% - 5px);
+}
+
+.icon-select {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1 1 calc(33.33% - 7px);
+}
+
+.icon-select i {
+    position: absolute;
+    left: 10px;
+    color: var(--accent);
+    font-size: 0.85rem;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.icon-select select {
+    width: 100%;
+    margin: 0;
+    padding-left: 30px;
+}
+
 select {
-    margin: 20px 0;
     padding: 10px;
     font-size: 16px;
     font-family: 'Montserrat', Arial, sans-serif;
@@ -238,8 +274,8 @@ select {
 /* --- Destination card --- */
 .destination {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column;
+    gap: 6px;
     padding: 12px 14px;
     margin-bottom: 10px;
     background: var(--bg-dest);
@@ -261,28 +297,57 @@ select {
     box-shadow: 0 4px 10px var(--shadow);
 }
 
-.destination a {
+.dest-row-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.dest-row-top a {
     color: var(--link);
     text-decoration: none;
     font-weight: 500;
     text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    flex: 1;
     transition: color var(--transition);
 }
 
-.destination a:hover {
+.dest-row-top a:hover {
     text-decoration: underline;
 }
 
-.destination-header {
+.dest-dist {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.dest-row-bottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 8px;
 }
 
-.destination-header .name-link {
+.dest-meta {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    min-width: 0;
+    flex-wrap: wrap;
+}
+
+.dest-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
 }
 
 /* --- Favorite icon --- */
@@ -314,8 +379,6 @@ select {
 }
 
 .icons {
-    margin-bottom: 5px;
-    margin-left: auto;
     display: flex;
     gap: 6px;
     color: var(--text-muted);
@@ -325,7 +388,6 @@ select {
 .note-icon {
     cursor: pointer;
     color: var(--accent);
-    margin-left: 10px;
     transition: transform var(--transition);
 }
 
@@ -336,7 +398,6 @@ select {
 .share-icon {
     cursor: pointer;
     color: var(--text-muted);
-    margin-left: 6px;
     font-size: 0.85rem;
     transition: color var(--transition), transform var(--transition);
 }
@@ -349,7 +410,6 @@ select {
 .trip-add-icon {
     cursor: pointer;
     color: var(--text-muted);
-    margin-left: 6px;
     font-size: 0.85rem;
     transition: color var(--transition), transform var(--transition);
 }
@@ -502,6 +562,32 @@ select {
 
 .modal-reroll i {
     margin-right: 4px;
+}
+
+.modal-trip-btn {
+    font-family: 'Montserrat', Arial, sans-serif;
+    padding: 8px 24px;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    background-color: var(--bg-dest);
+    color: var(--text);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    margin-top: 14px;
+    margin-left: 6px;
+    transition: background-color var(--transition), transform var(--transition);
+}
+
+.modal-trip-btn:hover {
+    background-color: var(--accent);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.modal-trip-btn.active {
+    background-color: var(--accent);
+    color: white;
 }
 
 /* --- Alt routes in modal --- */
@@ -705,7 +791,8 @@ select {
 }
 
 .fab-trip {
-    left: 24px;
+    right: 24px;
+    bottom: 80px;
     width: auto;
     padding: 0 16px;
     border-radius: 24px;
@@ -763,6 +850,22 @@ select {
 
 #trip-list .trip-name {
     flex: 1;
+}
+
+#trip-list .trip-move, #trip-list .trip-move-placeholder {
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+    color: var(--text-muted);
+}
+
+#trip-list .trip-move {
+    cursor: pointer;
+    transition: color var(--transition);
+}
+
+#trip-list .trip-move:hover {
+    color: var(--accent);
 }
 
 #trip-list .trip-remove {
@@ -932,8 +1035,63 @@ select {
         top: 0;
         z-index: 10;
         background: var(--bg-card);
-        padding: 10px 0;
-        margin-bottom: 10px;
+        padding: 10px 14px;
+        margin: 0 -14px 10px;
+        width: calc(100% + 28px);
+    }
+
+    .controls-bar {
+        flex-wrap: nowrap;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .controls-bar > * {
+        flex: 0 0 auto;
+    }
+
+    .icon-select select {
+        font-size: 0;
+        padding-left: 0;
+        text-align: center;
+        color: transparent;
+        width: 44px;
+        height: 44px;
+        min-height: 44px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .icon-select select option {
+        font-size: 0.9rem;
+        color: var(--text);
+    }
+
+    .icon-select i {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .icon-select {
+        flex: 0 0 44px;
+        min-width: 44px;
+        max-width: 44px;
+        height: 44px;
+    }
+
+    .controls-bar button {
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        border-radius: 50%;
+        flex: 0 0 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-label {
+        display: none;
     }
 
     .controls input,
@@ -943,24 +1101,28 @@ select {
         font-size: 0.95rem;
     }
 
-    /* Stack destination cards vertically */
     .destination {
-        flex-wrap: wrap;
         padding: 10px 12px;
-        gap: 4px 10px;
     }
 
-    .destination a {
-        flex: 1 1 100%;
+    .dest-row-top a {
         font-size: 0.95rem;
         min-height: 44px;
         display: flex;
         align-items: center;
     }
 
-    .icons {
-        margin-left: 0;
-        font-size: 0.8rem;
+    .dest-actions {
+        gap: 12px;
+        font-size: 0.95rem;
+    }
+
+    .dest-actions > i {
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     /* Compact pagination labels */

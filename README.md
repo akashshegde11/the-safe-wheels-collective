@@ -8,18 +8,21 @@ A static, mobile-first destinations repository for riders in and around Bengalur
 - **500+ destinations** across 9 exit routes from Bengaluru (Tumakuru, Hassana, Magadi, Mysuru, Kanakapura, Hosur, Hoskote, Devanahalli, Special Routes)
 - **Show All** — combine every destination into one searchable, filterable list when you don't care about the route
 - **Search** — filter destinations by name or notes
-- **Sort** — alphabetically or by distance from Bengaluru
+- **Sort** — alphabetically (A–Z / Z–A) or by distance from Bengaluru (near / far)
 - **State filter** — narrow down by state (Karnataka, Kerala, Tamil Nadu, etc.)
 - **Distance filter** — preset ranges (under 100 km, 100–200 km, 200–300 km, 300–500 km, 500+ km) to plan by ride length
 - **Pagination** — 25 destinations per page with First/Previous/Next/Last controls
 - **Per-exit counts** — each dropdown option shows how many destinations it contains
 
 ### Discover
-- **Surprise Me!** — random destination picker from the current filtered list, with a reroll button to try another
+- **Surprise Me!** — random destination picker from the current filtered list, with a reroll button to try another and an option to add the pick to your trip
 - **Alternate routes** — destinations reachable via multiple exits show all route options with per-route distance and notes
 - **Icon tags** — each destination can show icons for accessibility (car/motorcycle), terrain (trekking, forest), type (temple, waterfall, food), caution, entry fee, and more
 - **Collapsible icon legend** — tap to expand/collapse the full icon reference
+- **Icon filter** — tap any icon in the legend to filter destinations by that type (e.g. show only waterfalls, only temples)
 - **Destination count badge** — shows how many destinations match your current filters
+- **Recently viewed** — last 5 clicked destinations are remembered across sessions for quick access
+- **Trip planner** — add multiple destinations to a trip (from cards or modals), reorder stops with ▲/▼ buttons, optionally start/end at Bengaluru, and open the full route in Google Maps
 
 ### Personalize
 - **Favorites** — star destinations to bookmark them (stored in localStorage), with a toggle to show only favorites
@@ -40,6 +43,8 @@ A static, mobile-first destinations repository for riders in and around Bengalur
 ### Design
 - Muted teal & warm neutral color scheme — optimized for outdoor sunlight readability and night sky viewing
 - Mobile-first with 44px touch targets, sticky controls, and edge-to-edge layout on small screens
+- Compact icon toolbar on mobile — sort, state, distance filters collapse to icon-only circular buttons; full text visible on desktop
+- Two-row destination cards — name with ellipsis truncation on top, metadata and actions on bottom for clean mobile portrait layout
 - Floating back-to-top button appears after scrolling down
 - Fully static — hosted on GitHub Pages with zero external dependencies beyond Google Fonts and Font Awesome
 

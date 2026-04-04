@@ -2299,6 +2299,22 @@ const noteModal = document.getElementById('note-modal');
 const modalTitle = document.getElementById('modal-title');
 const modalContent = document.getElementById('modal-content');
 const modalIcons = document.getElementById('modal-icons');
+let currentModalDest = null;
+const modalTripBtn = document.getElementById('modal-trip-btn');
+const modalTripLabel = document.getElementById('modal-trip-label');
+
+function updateModalTripBtn() {
+    const inTrip = tripStops.some(s => s.name === currentModalDest);
+    modalTripLabel.textContent = inTrip ? 'Remove from Trip' : 'Add to Trip';
+    modalTripBtn.classList.toggle('active', inTrip);
+}
+
+modalTripBtn.addEventListener('click', function () {
+    if (currentModalDest) {
+        toggleTripStop(currentModalDest);
+        updateModalTripBtn();
+    }
+});
 
 function getDestinationsForExit(val) {
     if (val === 'all') return Object.values(destinations).flat();
@@ -2369,15 +2385,21 @@ function renderDestinations(data) {
         const isFav = favorites.has(destination.name);
         destinationsList.innerHTML += `
             <div class="destination">
-                <i class="fa fa-star fav-icon${isFav ? ' active' : ''}" data-name="${destination.name}"></i>
-                <a href="${destination.link}" target="_blank">${destination.name}</a>
-                <span>${destination.distance !== undefined ? "(" + destination.distance + " km)" : ""}</span>
-                ${destination.state ? `<span class="state-badge">${destination.state}</span>` : ''}
-                ${destination.note || destination.altExits ? `<i class="fa fa-info-circle note-icon" data-index="${index}"></i>` : ''}
-                ${canShare ? `<i class="fa fa-share-nodes share-icon" data-name="${destination.name}" data-link="${destination.link}"></i>` : ''}
-                <i class="fa fa-plus-circle trip-add-icon${tripStops.some(s => s.name === destination.name) ? ' active' : ''}" data-name="${destination.name}"></i>
-                <div class="icons">
-                    ${(destination.icons || []).map(icon => `<i class="fa ${icon}"></i>`).join(' ')}
+                <div class="dest-row-top">
+                    <i class="fa fa-star fav-icon${isFav ? ' active' : ''}" data-name="${destination.name}"></i>
+                    <a href="${destination.link}" target="_blank">${destination.name}</a>
+                    <span class="dest-dist">${destination.distance !== undefined ? "(" + destination.distance + " km)" : ""}</span>
+                </div>
+                <div class="dest-row-bottom">
+                    <div class="dest-meta">
+                        ${destination.state ? `<span class="state-badge">${destination.state}</span>` : ''}
+                        <span class="icons">${(destination.icons || []).map(icon => `<i class="fa ${icon}"></i>`).join(' ')}</span>
+                    </div>
+                    <span class="dest-actions">
+                        ${destination.note || destination.altExits ? `<i class="fa fa-info-circle note-icon" data-index="${index}"></i>` : ''}
+                        ${canShare ? `<i class="fa fa-share-nodes share-icon" data-name="${destination.name}" data-link="${destination.link}"></i>` : ''}
+                        <i class="fa fa-plus-circle trip-add-icon${tripStops.some(s => s.name === destination.name) ? ' active' : ''}" data-name="${destination.name}"></i>
+                    </span>
                 </div>
             </div>
         `;
@@ -2396,7 +2418,7 @@ function renderDestinations(data) {
             toggleTripStop(this.dataset.name);
         });
     });
-    destinationsList.querySelectorAll('.destination > a').forEach(link => {
+    destinationsList.querySelectorAll('.dest-row-top > a').forEach(link => {
         link.addEventListener('click', function () {
             addRecent(this.textContent, this.href);
         });
@@ -2428,6 +2450,8 @@ function attachNoteListeners(data) {
                 renderAltExits(destination.altExits) +
                 `<a href="${destination.link}" target="_blank" rel="noopener" class="modal-map-link"><i class="fa fa-map-location-dot"></i> Open in Google Maps</a>`;
             modalIcons.innerHTML = (destination.icons || []).map(icon => `<li><i class="fa ${icon}"></i> ${getIconDescription(icon)}</li>`).join('');
+            currentModalDest = destination.name;
+            updateModalTripBtn();
             modalOverlay.classList.add('show');
             noteModal.classList.add('show');
         });
@@ -2525,10 +2549,16 @@ function getFilteredData() {
 
     data = [...data].sort((a, b) => {
         if (sortKey === 'name') return a.name.localeCompare(b.name);
+        if (sortKey === 'name-desc') return b.name.localeCompare(a.name);
         if (sortKey === 'distance') {
             if (a.distance === undefined) return 1;
             if (b.distance === undefined) return -1;
             return a.distance - b.distance;
+        }
+        if (sortKey === 'distance-desc') {
+            if (a.distance === undefined) return 1;
+            if (b.distance === undefined) return -1;
+            return b.distance - a.distance;
         }
     });
 
@@ -2599,6 +2629,8 @@ function showRandomPick() {
         (pick.distance !== undefined ? `<li><i class="fa fa-road"></i> ${pick.distance} km from Bengaluru</li>` : '') +
         (pick.icons || []).map(i => `<li><i class="fa ${i}"></i> ${getIconDescription(i)}</li>`).join('');
     document.getElementById('reroll-btn').style.display = 'inline-block';
+    currentModalDest = pick.name;
+    updateModalTripBtn();
     modalOverlay.classList.add('show');
     noteModal.classList.add('show');
 }
@@ -2668,9 +2700,18 @@ function openTripModal() {
     document.getElementById('trip-circuit').style.display = hasStops ? 'flex' : 'none';
     let html = '';
     tripStops.forEach((s, i) => {
-        html += `<li><span class="trip-num">${i + 1}.</span><span class="trip-name">${s.name}</span><i class="fa fa-xmark trip-remove" data-idx="${i}"></i></li>`;
+        const up = i > 0 ? `<i class="fa fa-caret-up trip-move" data-idx="${i}" data-dir="-1"></i>` : '<span class="trip-move-placeholder"></span>';
+        const down = i < tripStops.length - 1 ? `<i class="fa fa-caret-down trip-move" data-idx="${i}" data-dir="1"></i>` : '<span class="trip-move-placeholder"></span>';
+        html += `<li><span class="trip-num">${i + 1}.</span><span class="trip-name">${s.name}</span>${up}${down}<i class="fa fa-xmark trip-remove" data-idx="${i}"></i></li>`;
     });
     tripList.innerHTML = html;
+    tripList.querySelectorAll('.trip-move').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const i = parseInt(this.dataset.idx), j = i + parseInt(this.dataset.dir);
+            [tripStops[i], tripStops[j]] = [tripStops[j], tripStops[i]];
+            openTripModal();
+        });
+    });
     tripList.querySelectorAll('.trip-remove').forEach(btn => {
         btn.addEventListener('click', function () {
             tripStops.splice(parseInt(this.dataset.idx), 1);
@@ -2705,8 +2746,7 @@ renderRecent();
 document.querySelectorAll('#icon-legend li').forEach(li => {
     li.style.cursor = 'pointer';
     li.addEventListener('click', function () {
-        const icon = this.querySelector('i').className.replace('fa ', '').replace('fa-', '');
-        const cls = 'fa-' + icon;
+        const cls = this.querySelector('i').className.split(' ').find(c => c.startsWith('fa-'));
         if (activeIconFilter === cls) {
             activeIconFilter = null;
             this.classList.remove('active');
