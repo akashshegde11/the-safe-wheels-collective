@@ -2286,12 +2286,13 @@ const destinations = {
 
 const exitSelect = document.getElementById("exit-select");
 const savedExit = localStorage.getItem('tswc-exit');
-if (savedExit && destinations[savedExit]) exitSelect.value = savedExit;
+if (savedExit && (savedExit === 'all' || destinations[savedExit])) exitSelect.value = savedExit;
 
 const destinationsList = document.getElementById("destinations-list");
 const searchInput = document.getElementById('search-input');
 const sortSelect = document.getElementById('sort-select');
 const stateFilter = document.getElementById('state-filter');
+const distanceFilter = document.getElementById('distance-filter');
 const paginationControls = document.getElementById('pagination-controls');
 const modalOverlay = document.querySelector('.modal-overlay');
 const noteModal = document.getElementById('note-modal');
@@ -2299,9 +2300,14 @@ const modalTitle = document.getElementById('modal-title');
 const modalContent = document.getElementById('modal-content');
 const modalIcons = document.getElementById('modal-icons');
 
+function getDestinationsForExit(val) {
+    if (val === 'all') return Object.values(destinations).flat();
+    return destinations[val] || [];
+}
+
 const itemsPerPage = 25;
 let currentPage = 1;
-let selectedDestinations = destinations[exitSelect.value];
+let selectedDestinations = getDestinationsForExit(exitSelect.value);
 let currentDisplayData = selectedDestinations;
 let showFavoritesOnly = false;
 const favorites = new Set(JSON.parse(localStorage.getItem('tswc-favorites') || '[]'));
@@ -2347,7 +2353,7 @@ function renderDestinations(data) {
                 <a href="${destination.link}" target="_blank">${destination.name}</a>
                 <span>${destination.distance !== undefined ? "(" + destination.distance + " km)" : ""}</span>
                 ${destination.state ? `<span class="state-badge">${destination.state}</span>` : ''}
-                ${destination.note ? `<i class="fa fa-info-circle note-icon" data-index="${index}"></i>` : ''}
+                ${destination.note || destination.altExits ? `<i class="fa fa-info-circle note-icon" data-index="${index}"></i>` : ''}
                 ${canShare ? `<i class="fa fa-share-nodes share-icon" data-name="${destination.name}" data-link="${destination.link}"></i>` : ''}
                 <div class="icons">
                     ${(destination.icons || []).map(icon => `<i class="fa ${icon}"></i>`).join(' ')}
@@ -2366,13 +2372,30 @@ function renderDestinations(data) {
     });
 }
 
+function renderAltExits(altExits) {
+    if (!altExits || !altExits.length) return '';
+    return '<div class="alt-routes">' +
+        '<strong><i class="fa fa-route"></i> Also reachable via</strong>' +
+        altExits.map(a => {
+            const exitLabel = (exitSelect.querySelector(`option[value="${a.exit}"]`) || {}).textContent || a.exit;
+            return '<div class="alt-route-item">' +
+                `<span class="alt-route-exit">${exitLabel.split(' \u2014')[0]}</span>` +
+                (a.distance !== undefined ? ` <span class="alt-route-dist">${a.distance} km</span>` : '') +
+                (a.note ? `<div class="alt-route-note">${a.note}</div>` : '') +
+                '</div>';
+        }).join('') +
+        '</div>';
+}
+
 function attachNoteListeners(data) {
     document.querySelectorAll('.note-icon').forEach(icon => {
         icon.addEventListener('click', function () {
             const index = this.dataset.index;
             const destination = data[index];
             modalTitle.textContent = destination.name;
-            modalContent.textContent = destination.note;
+            modalContent.innerHTML = (destination.note ? `<span>${destination.note}</span><br><br>` : '') +
+                renderAltExits(destination.altExits) +
+                `<a href="${destination.link}" target="_blank" rel="noopener" class="modal-map-link"><i class="fa fa-map-location-dot"></i> Open in Google Maps</a>`;
             modalIcons.innerHTML = (destination.icons || []).map(icon => `<li><i class="fa ${icon}"></i> ${getIconDescription(icon)}</li>`).join('');
             modalOverlay.classList.add('show');
             noteModal.classList.add('show');
@@ -2452,13 +2475,20 @@ function populateStateFilter() {
 function getFilteredData() {
     const query = searchInput.value.toLowerCase();
     const state = stateFilter.value;
+    const distRange = distanceFilter.value;
     const sortKey = sortSelect.value;
 
     let data = selectedDestinations.filter(d => {
         const matchesSearch = (d.name || '').toLowerCase().includes(query) || (d.note || '').toLowerCase().includes(query);
         const matchesState = state === 'all' || d.state === state;
         const matchesFav = !showFavoritesOnly || favorites.has(d.name);
-        return matchesSearch && matchesState && matchesFav;
+        let matchesDist = true;
+        if (distRange !== 'all') {
+            if (d.distance === undefined) { matchesDist = false; }
+            else if (distRange === '500+') { matchesDist = d.distance >= 500; }
+            else { const [min, max] = distRange.split('-').map(Number); matchesDist = d.distance >= min && d.distance < max; }
+        }
+        return matchesSearch && matchesState && matchesFav && matchesDist;
     });
 
     data = [...data].sort((a, b) => {
@@ -2478,10 +2508,11 @@ function applyFilters() {
 }
 
 exitSelect.addEventListener('change', function () {
-    selectedDestinations = destinations[this.value];
+    selectedDestinations = getDestinationsForExit(this.value);
     localStorage.setItem('tswc-exit', this.value);
     searchInput.value = '';
     stateFilter.value = 'all';
+    distanceFilter.value = 'all';
     sortSelect.value = 'name';
     populateStateFilter();
     applyFilters();
@@ -2490,6 +2521,7 @@ exitSelect.addEventListener('change', function () {
 searchInput.addEventListener('input', applyFilters);
 sortSelect.addEventListener('change', applyFilters);
 stateFilter.addEventListener('change', applyFilters);
+distanceFilter.addEventListener('change', applyFilters);
 
 document.getElementById('fav-toggle').addEventListener('click', function () {
     showFavoritesOnly = !showFavoritesOnly;
@@ -2526,6 +2558,7 @@ function showRandomPick() {
     modalTitle.textContent = '🎲 ' + pick.name;
     modalContent.innerHTML =
         (pick.note ? `<span>${pick.note}</span><br><br>` : '') +
+        renderAltExits(pick.altExits) +
         `<a href="${pick.link}" target="_blank" rel="noopener" class="modal-map-link"><i class="fa fa-map-location-dot"></i> Open in Google Maps</a>`;
     modalIcons.innerHTML =
         (pick.state ? `<li><i class="fa fa-location-dot"></i> ${pick.state}</li>` : '') +
@@ -2547,6 +2580,10 @@ document.addEventListener('keydown', function (e) {
     if (e.key === '/' ) { e.preventDefault(); searchInput.focus(); }
     if (e.key === 'r' || e.key === 'R') showRandomPick();
     if (e.key === 'Escape') closeModal();
+});
+
+exitSelect.querySelectorAll('option').forEach(o => {
+    o.textContent += ` — ${getDestinationsForExit(o.value).length} destinations`;
 });
 
 populateStateFilter();

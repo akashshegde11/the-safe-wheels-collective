@@ -439,6 +439,55 @@ select {
     margin-right: 4px;
 }
 
+/* --- Alt routes in modal --- */
+.alt-routes {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    background: var(--bg-dest);
+    border-radius: var(--radius);
+    border-left: 3px solid var(--accent);
+    text-align: left;
+    font-size: 0.85rem;
+}
+
+.alt-routes strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.alt-routes strong i {
+    margin-right: 4px;
+    color: var(--accent);
+}
+
+.alt-route-item {
+    margin: 4px 0;
+}
+
+.alt-route-exit {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.alt-route-dist {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.alt-route-dist::before {
+    content: '·';
+    margin: 0 4px;
+}
+
+.alt-route-note {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-top: 2px;
+}
+
 .modal-map-link {
     display: inline-block;
     padding: 8px 16px;

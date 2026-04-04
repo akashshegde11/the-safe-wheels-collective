@@ -34,6 +34,7 @@
         <div class="controls">
             <label for="exit-select">Select Side:</label>
             <select id="exit-select">
+                <option value="all">Show All</option>
                 <option value="tumakuru">Tumakuru Highway</option>
                 <option value="hassana">Hassana Highway</option>
                 <option value="magadi">Magadi Road</option>
@@ -51,6 +52,14 @@
             </select>
             <select id="state-filter">
                 <option value="all">All States</option>
+            </select>
+            <select id="distance-filter">
+                <option value="all">Any Distance</option>
+                <option value="0-100">Under 100 km</option>
+                <option value="100-200">100–200 km</option>
+                <option value="200-300">200–300 km</option>
+                <option value="300-500">300–500 km</option>
+                <option value="500+">500+ km</option>
             </select>
             <button id="random-pick"><i class="fa fa-shuffle"></i> Surprise Me!</button>
             <button id="fav-toggle"><i class="fa fa-star"></i> Favorites</button>
