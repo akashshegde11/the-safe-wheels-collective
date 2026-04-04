@@ -1,10 +1,10 @@
 const destinations = {
   tumakuru: [
     {
-      name: "Anashi Falls",
+      name: "Anshi Falls",
       link: "https://maps.app.goo.gl/qYtjkGiz4tX35APd9",
       icons: ["fa-droplet", "fa-tree", "fa-s"],
-      note: "Scenic waterfalls through a beautiful forest with a lovely twisties section.",
+      note: "Scenic waterfalls through a beautiful forest with a lovely twisties section. November 2025 update - road conditions have degraded massively, pretty much off-roading.",
       distance: 490,
       state: "Karnataka"
     },
@@ -13,44 +13,61 @@ const destinations = {
       link: "https://maps.app.goo.gl/CNnSWgoFufau9xYe8",
       icons: ["fa-gopuram"],
       note: "Ancient Jain temple with beautiful stone carvings.",
-      distance: 100
+      distance: 100,
+      state: "Karnataka"
     },
     {
       name: "Ancient Shri Venkataramana Swamy Temple Medigeshi",
       link: "https://maps.app.goo.gl/rTdVeAe7kwtq569C9",
-      icons: ["fa-gopuram"]
+      icons: ["fa-gopuram"],
+      distance: 130,
+      state: "Karnataka"
     },
     {
       name: "Anjanadri Betta (Kishkindha)",
       link: "https://maps.app.goo.gl/fXtdbfTj1pLi4T538",
-      icons: ["fa-gopuram", "fa-hiking"]
+      icons: ["fa-gopuram", "fa-hiking"],
+      note: "Birthplace of Lord Hanuman, 575 steps climb to the top",
+      distance: 365,
+      state: "Karnataka"
     },
     {
       name: "Apsarakonda Waterfalls",
-      link: "https://maps.app.goo.gl/tXFfSptBNWKaTti66"
+      link: "https://maps.app.goo.gl/tXFfSptBNWKaTti66",
+      icons: ["fa-car", "fa-motorcycle", "fa-hiking", "fa-droplet", "fa-tree", "fa-indian-rupee-sign", "fa-leaf"],
+      distance: 490,
+      state: "Karnataka"
     },
     {
       name: "Beeranakallu Betta Temple",
       link: "https://maps.app.goo.gl/cgAqywhpVimU332eA",
-      icons: ["fa-hiking", "fa-triangle-exclamation", "fa-gopuram"]
+      icons: ["fa-hiking", "fa-triangle-exclamation", "fa-gopuram"],
+      distance: 80,
+      state: "Karnataka"
     },
     {
       name: "Bheemana Gudda",
       link: "https://maps.app.goo.gl/UCTGGWjSkdXfCbbv8",
-      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation"]
+      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation", "fa-indian-rupee-sign"],
+      note: "Very scenic viewpoint overlooking the Aghnashini River, recommended to go for sunset. Entry fee as of 2025 - 10 for bike, 20 for car.",
+      distance: 450,
+      state: "Karnataka"
     },
     {
       name: "Borana Kanive Reservoir",
-      link: "https://maps.app.goo.gl/twzHS8HVgR3KyZJ5A"
+      link: "https://maps.app.goo.gl/twzHS8HVgR3KyZJ5A",
+      state: "Karnataka"
     },
     {
       name: "BREN Raceway",
       link: "https://maps.app.goo.gl/VjNS8bTh3SgURFqR6",
-      icons: ["fa-x", "fa-flag-checkered"]
+      icons: ["fa-x", "fa-flag-checkered"],
+      state: "Karnataka"
     },
     {
       name: "Burude Falls",
-      link: "https://maps.app.goo.gl/KmY7brWpjSzU3H6LA"
+      link: "https://maps.app.goo.gl/KmY7brWpjSzU3H6LA",
+      state: "Karnataka"
     },
     {
       name: "Chandravalli Archaeological Site",
@@ -62,7 +79,8 @@ const destinations = {
     },
     {
       name: "Channarayana Durga Fort",
-      link: "https://maps.app.goo.gl/zFvK3Vy6WdL6yEsU8"
+      link: "https://maps.app.goo.gl/zFvK3Vy6WdL6yEsU8",
+      state: "Karnataka"
     },
     {
       name: "Chinaga Bettada Shri Ranganathaswamy Temple",
@@ -71,22 +89,26 @@ const destinations = {
     },
     {
       name: "Chitradurga Fort",
-      link: "https://maps.app.goo.gl/f8GT9nXjyyYYwTBA9"
+      link: "https://maps.app.goo.gl/f8GT9nXjyyYYwTBA9",
+      state: "Karnataka"
     },
     {
       name: "Devarayanadurga Betta (DD Hills)",
       link: "https://maps.app.goo.gl/f1A8deHqbmh1SUSW9",
-      icons: ["fa-motorcycle", "fa-car", "fa-hiking"]
+      icons: ["fa-motorcycle", "fa-car", "fa-hiking"],
+      state: "Karnataka"
     },
     {
       name: "Devarayanadurga Katte",
       link: "https://maps.app.goo.gl/AmPLLNKJp45enXNC8",
-      icons: ["fa-motorcycle", "fa-car"]
+      icons: ["fa-motorcycle", "fa-car"],
+      state: "Karnataka"
     },
     {
       name: "Devimane",
       link: "https://maps.app.goo.gl/jMGYCQqcx5FowR8Q9",
-      icons: ["fa-motorcycle", "fa-triangle-exclamation"]
+      icons: ["fa-motorcycle", "fa-triangle-exclamation"],
+      state: "Karnataka"
     },
     {
       name: "Dharamshala Cricket Stadium",
@@ -109,11 +131,13 @@ const destinations = {
     },
     {
       name: "Hampi Lake View Point",
-      link: "https://maps.app.goo.gl/3Ezn3VL7Jaq2C5pLA"
+      link: "https://maps.app.goo.gl/3Ezn3VL7Jaq2C5pLA",
+      state: "Karnataka"
     },
     {
       name: "Honnemaradu",
-      link: "https://maps.app.goo.gl/Xo1ayxN3vLBez7hX7"
+      link: "https://maps.app.goo.gl/Xo1ayxN3vLBez7hX7",
+      state: "Karnataka"
     },
     {
       name: "Hulukudi Betta",
@@ -122,11 +146,13 @@ const destinations = {
     {
       name: "Jog Falls",
       link: "https://maps.app.goo.gl/nexuo9zMne6gzhfDA",
-      icons: ["fa-motorcycle", "fa-car"]
+      icons: ["fa-motorcycle", "fa-car"],
+      state: "Karnataka"
     },
     {
       name: "Kadra Dam",
-      link: "https://maps.app.goo.gl/TUL3GnC4R77YBhe2A"
+      link: "https://maps.app.goo.gl/TUL3GnC4R77YBhe2A",
+      state: "Karnataka"
     },
     {
       name: "Kaggaladu Bird Sanctuary",
@@ -134,11 +160,13 @@ const destinations = {
     },
     {
       name: "Kaiga Power Plant Viewpoint",
-      link: "https://maps.app.goo.gl/2aamT23iEYEEQD486"
+      link: "https://maps.app.goo.gl/2aamT23iEYEEQD486",
+      state: "Karnataka"
     },
     {
       name: "Kaiga Waterfalls",
-      link: "https://maps.app.goo.gl/1brQkrKgWjkf8s1NA"
+      link: "https://maps.app.goo.gl/1brQkrKgWjkf8s1NA",
+      state: "Karnataka"
     },
     {
       name: "Kalo Dungar",
@@ -146,15 +174,18 @@ const destinations = {
     },
     {
       name: "Kasturi Rangappa Nayaka Fort",
-      link: "https://maps.app.goo.gl/mUqki6n2xJbUFR4F6"
+      link: "https://maps.app.goo.gl/mUqki6n2xJbUFR4F6",
+      state: "Karnataka"
     },
     {
       name: "Kote Kallappana Betta",
-      link: "https://maps.app.goo.gl/MEwt4V8b8N7mZ4KXA"
+      link: "https://maps.app.goo.gl/MEwt4V8b8N7mZ4KXA",
+      state: "Karnataka"
     },
     {
       name: "Linganamakki Dam",
-      link: "https://maps.app.goo.gl/4j8yzukxpfXK89ueA"
+      link: "https://maps.app.goo.gl/4j8yzukxpfXK89ueA",
+      state: "Karnataka"
     },
     {
       name: "Lotus Mahal",
@@ -163,7 +194,8 @@ const destinations = {
     {
       name: "Madhugiri Fort",
       link: "https://maps.app.goo.gl/AfLJ7UqHHaSWvcbq8",
-      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation"]
+      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation"],
+      state: "Karnataka"
     },
     {
       name: "Magnetic Hill",
@@ -171,12 +203,14 @@ const destinations = {
     },
     {
       name: "Magod Waterfalls",
-      link: "https://maps.app.goo.gl/uASQvXFRfwvtXSN96"
+      link: "https://maps.app.goo.gl/uASQvXFRfwvtXSN96",
+      state: "Karnataka"
     },
     {
       name: "Mandaragiri Hill",
       link: "https://maps.app.goo.gl/i8pW4tAKWWVNURdPA",
-      icons: ["fa-motorcycle", "fa-car", "fa-hiking"]
+      icons: ["fa-motorcycle", "fa-car", "fa-hiking"],
+      state: "Karnataka"
     },
     {
       name: "Matanga Hill",
@@ -184,7 +218,8 @@ const destinations = {
     },
     {
       name: "Mattighatta Falls",
-      link: "https://maps.app.goo.gl/DXDYMoxXBydfXV7z7"
+      link: "https://maps.app.goo.gl/DXDYMoxXBydfXV7z7",
+      state: "Karnataka"
     },
     {
       name: "Mohini Shikhara",
@@ -193,34 +228,41 @@ const destinations = {
     {
       name: "Mydala Lake",
       link: "https://maps.app.goo.gl/oCnWXbfwtJ3k2zhq5",
-      icons: ["fa-motorcycle", "fa-car", "fa-hiking"]
+      icons: ["fa-motorcycle", "fa-car", "fa-hiking"],
+      state: "Karnataka"
     },
     {
       name: "Naval Beach Karwar",
       link: "https://maps.app.goo.gl/PnfcVNeUpmLkmQVw5",
-      icons: ["fa-motorcycle", "fa-car"]
+      icons: ["fa-motorcycle", "fa-car"],
+      state: "Karnataka"
     },
     {
       name: "Naamadha Chilume",
       link: "https://maps.app.goo.gl/wX4anvvan1h9NRZ69",
-      icons: ["fa-motorcycle", "fa-car"]
+      icons: ["fa-motorcycle", "fa-car"],
+      state: "Karnataka"
     },
     {
       name: "Nigundi Nature Viewpoint",
-      link: "https://maps.app.goo.gl/dJfFkEJ7nJNWeXXp9"
+      link: "https://maps.app.goo.gl/dJfFkEJ7nJNWeXXp9",
+      state: "Karnataka"
     },
     {
       name: "Nijagal Betta Kote",
-      link: "https://maps.app.goo.gl/ZhpXbnb3rdxkGi4d8"
+      link: "https://maps.app.goo.gl/ZhpXbnb3rdxkGi4d8",
+      state: "Karnataka"
     },
     {
       name: "Om Beach",
       link: "https://maps.app.goo.gl/5TXn1Nu2nMF7LgqR6",
-      icons: ["fa-motorcycle", "fa-car"]
+      icons: ["fa-motorcycle", "fa-car"],
+      state: "Karnataka"
     },
     {
       name: "Onake Obavvana Kindi",
-      link: "https://maps.app.goo.gl/v6YxFV6eiAojTPoq9"
+      link: "https://maps.app.goo.gl/v6YxFV6eiAojTPoq9",
+      state: "Karnataka"
     },
     {
       name: "Pingleshwar Mahadev Beach",
@@ -239,12 +281,14 @@ const destinations = {
     {
       name: "Sadashivagada Fort",
       link: "https://maps.app.goo.gl/VtFJQQVxZnmSkSnn9",
-      icons: ["fa-motorcycle", "fa-car", "fa-hiking"]
+      icons: ["fa-motorcycle", "fa-car", "fa-hiking"],
+      state: "Karnataka"
     },
     {
       name: "Sahasralinga",
       link: "https://maps.app.goo.gl/SE9k9er8nuWVjap19",
-      icons: ["fa-motorcycle", "fa-car", "fa-triangle-exclamation"]
+      icons: ["fa-motorcycle", "fa-car", "fa-triangle-exclamation"],
+      state: "Karnataka"
     },
     {
       name: "Sanapur Lake",
@@ -267,12 +311,14 @@ const destinations = {
     {
       name: "Shree Ramalingeshwara Swamy Temple Baradi",
       link: "https://maps.app.goo.gl/G49eRfLYwudPEmsX9",
-      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation"]
+      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation"],
+      state: "Karnataka"
     },
     {
       name: "Shree Vijaya Vitthala Temple",
       link: "https://maps.app.goo.gl/pruGEEbUUsBGrrZy8",
-      icons: ["fa-gopuram"]
+      icons: ["fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Shri Adi Shankaracharya Temple Srinagar",
@@ -288,41 +334,49 @@ const destinations = {
     {
       name: "Shri Idagunji Mahaganapati Temple",
       link: "https://maps.app.goo.gl/GrBTRkvVt9eXtier7",
-      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"]
+      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Shri Karikaana Parameshwari Ammanavara Temple",
       link: "https://maps.app.goo.gl/cAg2or6UgCDKDm9d8",
-      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"]
+      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Shri Kulle Kalleshwara Temple",
       link: "https://maps.app.goo.gl/QTfa77xnPp1q6MuL6",
-      icons: ["fa-motorcycle", "fa-car", "fa-triangle-exclamation", "fa-gopuram"]
+      icons: ["fa-motorcycle", "fa-car", "fa-triangle-exclamation", "fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Shri Madhukeshwara Temple (Banavasi)",
       link: "https://maps.app.goo.gl/3LmsenUiLiCnkxio9",
-      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"]
+      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Shri Mahabaleshwara Temple (Gokarna)",
       link: "https://maps.app.goo.gl/N3EL4ivnhcFFtu1VA",
-      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"]
+      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Shri Marikamba Devi Temple",
       link: "https://maps.app.goo.gl/oDCg7iYAc3TiVtxK6",
-      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"]
+      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Shri Murudeshwara Shiva Temple",
       link: "https://maps.app.goo.gl/rJFPxHWk136LiPxt9",
-      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"]
+      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Siddara Betta",
-      link: "https://maps.app.goo.gl/xkfh4RE2mBBmfuDB8"
+      link: "https://maps.app.goo.gl/xkfh4RE2mBBmfuDB8",
+      state: "Karnataka"
     },
     {
       name: "Sri Ahobala Narasimha Swamy Temple",
@@ -343,16 +397,19 @@ const destinations = {
     {
       name: "Sri Shivagange Temple",
       link: "https://maps.app.goo.gl/MeLRQDQ1FY6xfF8GA",
-      icons: ["fa-gopuram"]
+      icons: ["fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Sri Uttare Siddeshwara Swami Gudi",
       link: "https://maps.app.goo.gl/XSPCVszXz3xy7UB28",
-      icons: ["fa-gopuram"]
+      icons: ["fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Sunset Point Hippie Island",
-      link: "https://maps.app.goo.gl/bSoGy2b5Ndwu44GC7"
+      link: "https://maps.app.goo.gl/bSoGy2b5Ndwu44GC7",
+      state: "Karnataka"
     },
     {
       name: "Sunset Point Mount Abu",
@@ -360,17 +417,20 @@ const destinations = {
     },
     {
       name: "Tungabhadraa Dam Lighthouse Viewpoint",
-      link: "https://maps.app.goo.gl/H1BpuUHAiioxpnQC6"
+      link: "https://maps.app.goo.gl/H1BpuUHAiioxpnQC6",
+      state: "Karnataka"
     },
     {
       name: "Unchalli Falls Viewpoint",
       link: "https://maps.app.goo.gl/Fow7uebGXsAcfGRWA",
-      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation"]
+      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation"],
+      state: "Karnataka"
     },
     {
       name: "Vani Vilasa Sagara Dam",
       link: "https://maps.app.goo.gl/a3khAFonu6tSwobQA",
-      icons: ["fa-droplet"]
+      icons: ["fa-droplet"],
+      state: "Karnataka"
     },
     {
       name: "Vijay Villas Palace",
@@ -379,17 +439,20 @@ const destinations = {
     {
       name: "Virupaksha Temple Hampi",
       link: "https://maps.app.goo.gl/ZHmyqqc65idx46JD9",
-      icons: ["fa-gopuram"]
+      icons: ["fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Yana Rocks",
       link: "https://maps.app.goo.gl/FGMYafdfYnvUpkRj9",
-      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation"]
+      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation"],
+      state: "Karnataka"
     },
     {
       name: "Yana Shri Mahaganapati Temple",
       link: "https://maps.app.goo.gl/qhoPZnDV4FtXzDvZA",
-      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation", "fa-gopuram"]
+      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation", "fa-gopuram"],
+      state: "Karnataka"
     }
   ],
   hassana: [
