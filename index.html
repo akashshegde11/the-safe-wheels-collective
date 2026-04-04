@@ -130,15 +130,31 @@
     </div>
 
     <button id="scroll-top" class="fab-top" aria-label="Back to top"><i class="fa fa-arrow-up"></i></button>
+    <button id="trip-fab" class="fab-trip" aria-label="Plan route"><i class="fa fa-route"></i> <span id="trip-count">0</span></button>
 
     <div class="modal-overlay"></div>
     <div class="modal" id="note-modal">
         <h3 id="modal-title"></h3>
         <p id="modal-content"></p>
         <ul id="modal-icons"></ul>
-        <!-- <button onclick="closeModal()">Close</button> -->
         <button class="modal-close" onclick="closeModal()">Close</button>
         <button class="modal-reroll" id="reroll-btn" onclick="reroll()"><i class="fa fa-shuffle"></i> Try Another</button>
+    </div>
+
+    <div class="modal" id="trip-modal">
+        <h3><i class="fa fa-route"></i> Trip Planner</h3>
+        <p id="trip-empty">Add destinations using the <i class="fa fa-plus-circle"></i> icon on each card.</p>
+        <p id="trip-disclaimer" class="trip-disclaimer"><i class="fa fa-info-circle"></i> Routes are generated using place names — verify stops in Google Maps before riding.</p>
+        <ul id="trip-list"></ul>
+        <div id="trip-circuit">
+            <label><input type="checkbox" id="trip-start-blr"> Start from Bengaluru</label>
+            <label><input type="checkbox" id="trip-end-blr"> Return to Bengaluru</label>
+        </div>
+        <div id="trip-actions">
+            <a id="trip-open" class="modal-map-link" href="#" target="_blank" rel="noopener"><i class="fa fa-map-location-dot"></i> Open Route in Google Maps</a>
+            <button class="modal-close" onclick="clearTrip()"><i class="fa fa-trash"></i> Clear All</button>
+        </div>
+        <button class="modal-close" onclick="closeTripModal()">Close</button>
     </div>
 
     <script src="script.js"></script>

@@ -2342,6 +2342,7 @@ function toggleFavorite(name) {
 // exitSelect.dispatchEvent(new Event("change"));
 
 const canShare = !!navigator.share;
+const tripStops = [];
 
 function renderDestinations(data) {
     destinationsList.innerHTML = '';
@@ -2355,6 +2356,7 @@ function renderDestinations(data) {
                 ${destination.state ? `<span class="state-badge">${destination.state}</span>` : ''}
                 ${destination.note || destination.altExits ? `<i class="fa fa-info-circle note-icon" data-index="${index}"></i>` : ''}
                 ${canShare ? `<i class="fa fa-share-nodes share-icon" data-name="${destination.name}" data-link="${destination.link}"></i>` : ''}
+                <i class="fa fa-plus-circle trip-add-icon${tripStops.some(s => s.name === destination.name) ? ' active' : ''}" data-name="${destination.name}"></i>
                 <div class="icons">
                     ${(destination.icons || []).map(icon => `<i class="fa ${icon}"></i>`).join(' ')}
                 </div>
@@ -2368,6 +2370,11 @@ function renderDestinations(data) {
     document.querySelectorAll('.share-icon').forEach(icon => {
         icon.addEventListener('click', function () {
             navigator.share({ title: this.dataset.name, url: this.dataset.link });
+        });
+    });
+    document.querySelectorAll('.trip-add-icon').forEach(icon => {
+        icon.addEventListener('click', function () {
+            toggleTripStop(this.dataset.name);
         });
     });
 }
@@ -2579,12 +2586,92 @@ document.addEventListener('keydown', function (e) {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') return;
     if (e.key === '/' ) { e.preventDefault(); searchInput.focus(); }
     if (e.key === 'r' || e.key === 'R') showRandomPick();
-    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Escape') { closeModal(); closeTripModal(); }
 });
 
 exitSelect.querySelectorAll('option').forEach(o => {
     o.textContent += ` — ${getDestinationsForExit(o.value).length} destinations`;
 });
+
+// --- Trip Planner ---
+const tripFab = document.getElementById('trip-fab');
+const tripCountEl = document.getElementById('trip-count');
+const tripModal = document.getElementById('trip-modal');
+const tripList = document.getElementById('trip-list');
+const tripEmpty = document.getElementById('trip-empty');
+const tripActions = document.getElementById('trip-actions');
+const tripOpenLink = document.getElementById('trip-open');
+const tripStartBlr = document.getElementById('trip-start-blr');
+const tripEndBlr = document.getElementById('trip-end-blr');
+const BLR = 'Bengaluru, Karnataka, India';
+
+function toggleTripStop(name, link) {
+    const idx = tripStops.findIndex(s => s.name === name);
+    if (idx >= 0) tripStops.splice(idx, 1);
+    else {
+        const all = getDestinationsForExit('all');
+        const dest = all.find(d => d.name === name);
+        const query = name + (dest && dest.state ? ', ' + dest.state : '') + ', India';
+        tripStops.push({ name, query });
+    }
+    updateTripUI();
+    applyFilters();
+}
+
+function updateTripUI() {
+    tripCountEl.textContent = tripStops.length;
+    tripFab.classList.toggle('visible', tripStops.length >= 1);
+}
+
+function buildTripUrl() {
+    const startBlr = tripStartBlr.checked;
+    const endBlr = tripEndBlr.checked;
+    if (!tripStops.length) return '#';
+    const parts = [];
+    if (startBlr) parts.push(BLR);
+    parts.push(...tripStops.map(s => s.query));
+    if (endBlr) parts.push(BLR);
+    return 'https://www.google.com/maps/dir/' + parts.map(p => encodeURIComponent(p)).join('/');
+}
+
+function openTripModal() {
+    const hasStops = tripStops.length > 0;
+    tripEmpty.style.display = hasStops ? 'none' : 'block';
+    tripActions.style.display = hasStops ? 'flex' : 'none';
+    document.getElementById('trip-circuit').style.display = hasStops ? 'flex' : 'none';
+    let html = '';
+    tripStops.forEach((s, i) => {
+        html += `<li><span class="trip-num">${i + 1}.</span><span class="trip-name">${s.name}</span><i class="fa fa-xmark trip-remove" data-idx="${i}"></i></li>`;
+    });
+    tripList.innerHTML = html;
+    tripList.querySelectorAll('.trip-remove').forEach(btn => {
+        btn.addEventListener('click', function () {
+            tripStops.splice(parseInt(this.dataset.idx), 1);
+            updateTripUI();
+            openTripModal();
+            applyFilters();
+        });
+    });
+    if (hasStops) tripOpenLink.href = buildTripUrl();
+    modalOverlay.classList.add('show');
+    tripModal.classList.add('show');
+}
+
+function closeTripModal() {
+    modalOverlay.classList.remove('show');
+    tripModal.classList.remove('show');
+}
+
+function clearTrip() {
+    tripStops.length = 0;
+    updateTripUI();
+    closeTripModal();
+    applyFilters();
+}
+
+tripFab.addEventListener('click', openTripModal);
+tripStartBlr.addEventListener('change', () => { if (tripStops.length) tripOpenLink.href = buildTripUrl(); });
+tripEndBlr.addEventListener('change', () => { if (tripStops.length) tripOpenLink.href = buildTripUrl(); });
 
 populateStateFilter();
 applyFilters();

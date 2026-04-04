@@ -298,6 +298,23 @@ select {
     transform: scale(1.2);
 }
 
+.trip-add-icon {
+    cursor: pointer;
+    color: var(--text-muted);
+    margin-left: 6px;
+    font-size: 0.85rem;
+    transition: color var(--transition), transform var(--transition);
+}
+
+.trip-add-icon:hover {
+    color: var(--accent);
+    transform: scale(1.2);
+}
+
+.trip-add-icon.active {
+    color: var(--accent);
+}
+
 .state-badge {
     font-size: 0.7rem;
     padding: 2px 8px;
@@ -600,10 +617,9 @@ select {
 }
 
 /* --- Back-to-top FAB --- */
-.fab-top {
+.fab-top, .fab-trip {
     position: fixed;
     bottom: 24px;
-    right: 24px;
     width: 48px;
     height: 48px;
     border: none;
@@ -619,18 +635,125 @@ select {
     z-index: 50;
 }
 
-.fab-top.visible {
+.fab-top {
+    right: 24px;
+}
+
+.fab-trip {
+    left: 24px;
+    width: auto;
+    padding: 0 16px;
+    border-radius: 24px;
+    font-size: 0.85rem;
+    font-family: 'Montserrat', Arial, sans-serif;
+    gap: 6px;
+    display: flex;
+    align-items: center;
+}
+
+.fab-top.visible, .fab-trip.visible {
     opacity: 1;
     pointer-events: auto;
 }
 
-.fab-top:hover {
+.fab-top:hover, .fab-trip:hover {
     background: var(--accent-hover);
     transform: translateY(-2px);
 }
 
-.fab-top:active {
+.fab-top:active, .fab-trip:active {
     transform: translateY(0);
+}
+
+/* --- Trip modal --- */
+#trip-modal {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+#trip-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin: 10px 0;
+}
+
+#trip-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    margin: 4px 0;
+    background: var(--bg-dest);
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+}
+
+#trip-list .trip-num {
+    color: var(--accent);
+    font-weight: 600;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+#trip-list .trip-name {
+    flex: 1;
+}
+
+#trip-list .trip-remove {
+    cursor: pointer;
+    color: var(--text-muted);
+    margin-left: 8px;
+    flex-shrink: 0;
+    transition: color var(--transition);
+}
+
+#trip-list .trip-remove:hover {
+    color: #c0392b;
+}
+
+#trip-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 12px 0 6px;
+}
+
+#trip-empty {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.trip-disclaimer {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin: 8px 0 4px;
+}
+
+.trip-disclaimer i {
+    margin-right: 4px;
+    color: var(--accent);
+}
+
+#trip-circuit {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    margin: 10px 0;
+    font-size: 0.85rem;
+}
+
+#trip-circuit label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    color: var(--text);
+}
+
+#trip-circuit input {
+    accent-color: var(--accent);
 }
 
 /* --- Count badge --- */
