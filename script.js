@@ -2310,6 +2310,7 @@ let currentPage = 1;
 let selectedDestinations = getDestinationsForExit(exitSelect.value);
 let currentDisplayData = selectedDestinations;
 let showFavoritesOnly = false;
+let activeIconFilter = null;
 const favorites = new Set(JSON.parse(localStorage.getItem('tswc-favorites') || '[]'));
 
 function toggleFavorite(name) {
@@ -2343,6 +2344,24 @@ function toggleFavorite(name) {
 
 const canShare = !!navigator.share;
 const tripStops = [];
+const recentList = document.getElementById('recent-list');
+const recentSection = document.getElementById('recent-section');
+let recentViewed = JSON.parse(localStorage.getItem('tswc-recent') || '[]');
+
+function addRecent(name, link) {
+    recentViewed = recentViewed.filter(r => r.name !== name);
+    recentViewed.unshift({ name, link });
+    if (recentViewed.length > 5) recentViewed.length = 5;
+    localStorage.setItem('tswc-recent', JSON.stringify(recentViewed));
+    renderRecent();
+}
+
+function renderRecent() {
+    recentSection.style.display = recentViewed.length ? '' : 'none';
+    recentList.innerHTML = recentViewed.map(r =>
+        `<li><i class="fa fa-clock-rotate-left"></i><a href="${r.link}" target="_blank">${r.name}</a></li>`
+    ).join('');
+}
 
 function renderDestinations(data) {
     destinationsList.innerHTML = '';
@@ -2375,6 +2394,11 @@ function renderDestinations(data) {
     document.querySelectorAll('.trip-add-icon').forEach(icon => {
         icon.addEventListener('click', function () {
             toggleTripStop(this.dataset.name);
+        });
+    });
+    destinationsList.querySelectorAll('.destination > a').forEach(link => {
+        link.addEventListener('click', function () {
+            addRecent(this.textContent, this.href);
         });
     });
 }
@@ -2489,13 +2513,14 @@ function getFilteredData() {
         const matchesSearch = (d.name || '').toLowerCase().includes(query) || (d.note || '').toLowerCase().includes(query);
         const matchesState = state === 'all' || d.state === state;
         const matchesFav = !showFavoritesOnly || favorites.has(d.name);
+        const matchesIcon = !activeIconFilter || (d.icons && d.icons.includes(activeIconFilter));
         let matchesDist = true;
         if (distRange !== 'all') {
             if (d.distance === undefined) { matchesDist = false; }
             else if (distRange === '500+') { matchesDist = d.distance >= 500; }
             else { const [min, max] = distRange.split('-').map(Number); matchesDist = d.distance >= min && d.distance < max; }
         }
-        return matchesSearch && matchesState && matchesFav && matchesDist;
+        return matchesSearch && matchesState && matchesFav && matchesDist && matchesIcon;
     });
 
     data = [...data].sort((a, b) => {
@@ -2520,6 +2545,8 @@ exitSelect.addEventListener('change', function () {
     searchInput.value = '';
     stateFilter.value = 'all';
     distanceFilter.value = 'all';
+    activeIconFilter = null;
+    document.querySelectorAll('#icon-legend li').forEach(l => l.classList.remove('active'));
     sortSelect.value = 'name';
     populateStateFilter();
     applyFilters();
@@ -2672,6 +2699,25 @@ function clearTrip() {
 tripFab.addEventListener('click', openTripModal);
 tripStartBlr.addEventListener('change', () => { if (tripStops.length) tripOpenLink.href = buildTripUrl(); });
 tripEndBlr.addEventListener('change', () => { if (tripStops.length) tripOpenLink.href = buildTripUrl(); });
+
+renderRecent();
+
+document.querySelectorAll('#icon-legend li').forEach(li => {
+    li.style.cursor = 'pointer';
+    li.addEventListener('click', function () {
+        const icon = this.querySelector('i').className.replace('fa ', '').replace('fa-', '');
+        const cls = 'fa-' + icon;
+        if (activeIconFilter === cls) {
+            activeIconFilter = null;
+            this.classList.remove('active');
+        } else {
+            document.querySelectorAll('#icon-legend li').forEach(l => l.classList.remove('active'));
+            activeIconFilter = cls;
+            this.classList.add('active');
+        }
+        applyFilters();
+    });
+});
 
 populateStateFilter();
 applyFilters();

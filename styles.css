@@ -180,6 +180,54 @@ select {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
+/* --- Recently Viewed --- */
+#recent-section {
+    margin-bottom: 16px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-legend);
+    transition: background var(--transition), border-color var(--transition);
+}
+
+#recent-section summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+#recent-list {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+}
+
+#recent-list li {
+    padding: 6px 0;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--border);
+}
+
+#recent-list li:last-child {
+    border-bottom: none;
+}
+
+#recent-list a {
+    color: var(--link);
+    text-decoration: none;
+}
+
+#recent-list a:hover {
+    text-decoration: underline;
+}
+
+#recent-list i {
+    margin-right: 6px;
+    color: var(--accent);
+    font-size: 0.8rem;
+}
+
 /* --- Destinations list --- */
 #destinations-list {
     margin: 20px 0;
@@ -609,6 +657,23 @@ select {
     font-size: 0.85rem;
     color: var(--text-muted);
     white-space: nowrap;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: var(--radius);
+    transition: background var(--transition), color var(--transition);
+}
+
+#icon-legend li:hover {
+    background: var(--bg-dest);
+}
+
+#icon-legend li.active {
+    background: var(--accent);
+    color: white;
+}
+
+#icon-legend li.active i {
+    color: white;
 }
 
 #icon-legend i {
