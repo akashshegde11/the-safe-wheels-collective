@@ -49,9 +49,16 @@
                 <option value="name">Sort by Name</option>
                 <option value="distance">Sort by Distance</option>
             </select>
+            <select id="state-filter">
+                <option value="all">All States</option>
+            </select>
+            <button id="random-pick"><i class="fa fa-shuffle"></i> Surprise Me!</button>
+            <button id="fav-toggle"><i class="fa fa-star"></i> Favorites</button>
         </div>
         
         <div id="destinations-list"></div>
+
+        <div id="count-badge"></div>
 
         <div id="pagination-controls">
             <button id="first-page">First</button>
@@ -61,27 +68,59 @@
             <button id="last-page">Last</button>
         </div>
 
-        <div class="controls">
-            <button id="scroll-top">Move to Top</button>
-            <button id="scroll-bottom">Move to Bottom</button>
-        </div>
+
         
-        <div id="icon-legend">
-            <h3>Icon Legend</h3>
+        <details id="icon-legend">
+            <summary>Icon Legend</summary>
             <ul>
                 <li><i class="fa fa-car"></i> Accessible by Car</li>
                 <li><i class="fa fa-motorcycle"></i> Accessible by Motorcycle</li>
                 <li><i class="fa fa-hiking"></i> Trekking Destination</li>
+                <li><i class="fa fa-triangle-exclamation"></i> Caution Advised</li>
+                <li><i class="fa fa-gopuram"></i> Temple / Religious Site</li>
+                <li><i class="fa fa-utensils"></i> Food / Restaurant</li>
+                <li><i class="fa fa-x"></i> Closed / Not Accessible</li>
+                <li><i class="fa fa-cross"></i> Church / Christian Site</li>
+                <li><i class="fa fa-droplet"></i> Waterfall / Water Body</li>
+                <li><i class="fa fa-tree"></i> Forest / Nature</li>
+                <li><i class="fa fa-s"></i> Scenic Twisties</li>
+                <li><i class="fa fa-flag-checkered"></i> Racetrack</li>
+                <li><i class="fa fa-baseball-bat-ball"></i> Sports Venue</li>
+                <li><i class="fa fa-indian-rupee-sign"></i> Entry Fee</li>
+                <li><i class="fa fa-leaf"></i> Garden / Park</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="controls">
-            <label>
-                <input type="checkbox" id="dark-mode-toggle" /> Dark Mode
-            </label>
+        <label class="dark-toggle" for="dark-mode-toggle">
+            <input type="checkbox" id="dark-mode-toggle" />
+            <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            <i class="fa fa-moon"></i>
+        </label>
+
+        <div id="suggest-section">
+            <h3>Know a great spot?</h3>
+            <p>Help us grow the list, suggest a destination for fellow riders.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSetzOHPet69eLdPJIFlrNTfloo3sVEQPKDaIlSdwhugHWrDaA/viewform" target="_blank" rel="noopener" class="suggest-btn">
+                <i class="fa fa-plus-circle"></i> Suggest a Place
+            </a>
+            <details id="suggest-embed">
+                <summary>Or fill it out right here</summary>
+                <iframe
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSetzOHPet69eLdPJIFlrNTfloo3sVEQPKDaIlSdwhugHWrDaA/viewform?embedded=true"
+                    width="100%"
+                    height="900"
+                    frameborder="0"
+                    marginheight="0"
+                    marginwidth="0"
+                    loading="lazy"
+                    title="Suggest a Destination Form"
+                >Loading…</iframe>
+            </details>
         </div>
         
     </div>
+
+    <button id="scroll-top" class="fab-top" aria-label="Back to top"><i class="fa fa-arrow-up"></i></button>
 
     <div class="modal-overlay"></div>
     <div class="modal" id="note-modal">
@@ -89,7 +128,8 @@
         <p id="modal-content"></p>
         <ul id="modal-icons"></ul>
         <!-- <button onclick="closeModal()">Close</button> -->
-        <button class="controls" onclick="closeModal()">Close</button>
+        <button class="modal-close" onclick="closeModal()">Close</button>
+        <button class="modal-reroll" id="reroll-btn" onclick="reroll()"><i class="fa fa-shuffle"></i> Try Another</button>
     </div>
 
     <script src="script.js"></script>

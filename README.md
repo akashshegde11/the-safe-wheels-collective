@@ -1,2 +1,137 @@
-# the-safe-wheels-collective
-GitHub repository for The Safe Wheels Collective.
+# The Safe Wheels Collective
+
+A static, mobile-first destinations repository for riders in and around Bengaluru. Built for low-connectivity use in remote areas — no servers, no databases, just GitHub Pages.
+
+## Features
+
+### Browse & Navigate
+- **500+ destinations** across 9 exit routes from Bengaluru (Tumakuru, Hassana, Magadi, Mysuru, Kanakapura, Hosur, Hoskote, Devanahalli, Special Routes)
+- **Search** — filter destinations by name or notes
+- **Sort** — alphabetically or by distance from Bengaluru
+- **State filter** — narrow down by state (Karnataka, Kerala, Tamil Nadu, etc.)
+- **Pagination** — 25 destinations per page with First/Previous/Next/Last controls
+
+### Discover
+- **Surprise Me!** — random destination picker from the current filtered list, with a reroll button to try another
+- **Icon tags** — each destination can show icons for accessibility (car/motorcycle), terrain (trekking, forest), type (temple, waterfall, food), caution, entry fee, and more
+- **Collapsible icon legend** — tap to expand/collapse the full icon reference
+- **Destination count badge** — shows how many destinations match your current filters
+
+### Personalize
+- **Favorites** — star destinations to bookmark them (stored in localStorage), with a toggle to show only favorites
+- **Dark mode** — toggle switch optimized for night riding, preference remembered across sessions
+- **Exit memory** — your last selected exit route is remembered on next visit
+- **Share** — share any destination's Google Maps link via the native OS share sheet (WhatsApp, Telegram, etc.) using the Web Share API
+
+### Contribute
+- **Suggest a Place** — submit new destinations via an embedded Google Form, or open it in a new tab
+
+### Keyboard Shortcuts (Desktop)
+| Key | Action |
+|-----|--------|
+| `/` | Focus search |
+| `R` | Random pick |
+| `Esc` | Close modal |
+
+### Design
+- Muted teal & warm neutral color scheme — optimized for outdoor sunlight readability and night sky viewing
+- Mobile-first with 44px touch targets, sticky controls, and edge-to-edge layout on small screens
+- Floating back-to-top button appears after scrolling down
+- Fully static — hosted on GitHub Pages with zero external dependencies beyond Google Fonts and Font Awesome
+
+## Destination Manager CLI
+
+A Node.js CLI tool (`manage.js`) for adding or updating destinations in `script.js`.
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (any recent version)
+
+### Usage
+
+```bash
+node manage.js
+```
+
+The tool will walk you through the following prompts:
+
+```
+=== TSWC Destination Manager ===
+
+Exits: tumakuru, hassana, magadi, mysuru, kanakapura, hosur, hoskote, devanahalli, specials
+
+Exit: kanakapura
+Name: Udupi Sathkaar Gundlupete
+Link: https://maps.app.goo.gl/UK6uh3GoZtsP85LG6
+Icons (comma-separated numbers or names): 6
+Note:
+Distance in km: 200
+State: Karnataka
+
+--- Preview ---
+    {
+      name: "Udupi Sathkaar Gundlupete",
+      link: "https://maps.app.goo.gl/UK6uh3GoZtsP85LG6",
+      icons: ["fa-utensils"],
+      distance: 200,
+      state: "Karnataka"
+    }
+---------------
+
+Add this entry? (y/n): y
+Done! Added "Udupi Sathkaar Gundlupete" in kanakapura.
+```
+
+### Adding a new destination
+
+1. Run `node manage.js`
+2. Enter the exit route and destination name
+3. Fill in the fields — only **name** and **link** are required, the rest are optional
+4. Review the preview and confirm with `y`
+5. The entry is inserted alphabetically into the correct exit array in `script.js`
+
+### Updating an existing destination
+
+1. Run `node manage.js`
+2. Enter the same exit route and exact destination name
+3. The tool detects the existing entry and shows its current values
+4. Press **Enter** to keep a field's current value, or type a new value to replace it
+5. Review and confirm — the entry is updated in place
+
+### Icon reference
+
+Select icons by number during the prompt:
+
+| # | Icon | Meaning |
+|---|------|---------|
+| 1 | `fa-car` | Accessible by Car |
+| 2 | `fa-motorcycle` | Accessible by Motorcycle |
+| 3 | `fa-hiking` | Trekking Destination |
+| 4 | `fa-triangle-exclamation` | Caution Advised |
+| 5 | `fa-gopuram` | Temple / Religious Site |
+| 6 | `fa-utensils` | Food / Restaurant |
+| 7 | `fa-x` | Closed / Not Accessible |
+| 8 | `fa-cross` | Church / Christian Site |
+| 9 | `fa-droplet` | Waterfall / Water Body |
+| 10 | `fa-tree` | Forest / Nature |
+| 11 | `fa-s` | Scenic Twisties |
+| 12 | `fa-flag-checkered` | Racetrack |
+| 13 | `fa-baseball-bat-ball` | Sports Venue |
+| 14 | `fa-indian-rupee-sign` | Entry Fee |
+| 15 | `fa-leaf` | Garden / Park |
+
+Multiple icons: enter comma-separated numbers, e.g. `1,2,5` for Car + Motorcycle + Temple.
+
+## Files
+
+| File | Description |
+|------|-------------|
+| `index.html` | Main page structure |
+| `script.js` | Destination data and all application logic |
+| `styles.css` | Styling with CSS custom properties for theming |
+| `manage.js` | CLI tool for managing destinations |
+| `tswc_icon.png` | Site icon |
+
+## Hosting
+
+Hosted on [GitHub Pages](https://pages.github.com/) — push to `main` and it's live. No build step required.
