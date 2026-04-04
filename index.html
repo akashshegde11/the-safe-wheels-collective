@@ -34,6 +34,7 @@
         <div class="controls">
             <label for="exit-select">Select Side:</label>
             <select id="exit-select">
+                <option value="all">Show All</option>
                 <option value="tumakuru">Tumakuru Highway</option>
                 <option value="hassana">Hassana Highway</option>
                 <option value="magadi">Magadi Road</option>
@@ -45,16 +46,42 @@
                 <option value="specials">Special Routes/Circuits</option>
             </select>
             <input type="text" id="search-input" placeholder="Search destinations..." />
-            <select id="sort-select">
-                <option value="name">Sort by Name</option>
-                <option value="distance">Sort by Distance</option>
-            </select>
-            <select id="state-filter">
-                <option value="all">All States</option>
-            </select>
-            <button id="random-pick"><i class="fa fa-shuffle"></i> Surprise Me!</button>
-            <button id="fav-toggle"><i class="fa fa-star"></i> Favorites</button>
+            <div class="controls-bar">
+                <label class="icon-select" title="Sort">
+                    <i class="fa fa-arrow-down-a-z"></i>
+                    <select id="sort-select">
+                        <option value="name">Sort by Name (A–Z)</option>
+                        <option value="name-desc">Sort by Name (Z–A)</option>
+                        <option value="distance">Sort by Distance (Near)</option>
+                        <option value="distance-desc">Sort by Distance (Far)</option>
+                    </select>
+                </label>
+                <label class="icon-select" title="State">
+                    <i class="fa fa-location-dot"></i>
+                    <select id="state-filter">
+                        <option value="all">All States</option>
+                    </select>
+                </label>
+                <label class="icon-select" title="Distance">
+                    <i class="fa fa-road"></i>
+                    <select id="distance-filter">
+                        <option value="all">Any Distance</option>
+                        <option value="0-100">Under 100 km</option>
+                        <option value="100-200">100–200 km</option>
+                        <option value="200-300">200–300 km</option>
+                        <option value="300-500">300–500 km</option>
+                        <option value="500+">500+ km</option>
+                    </select>
+                </label>
+                <button id="random-pick" title="Surprise Me!"><i class="fa fa-shuffle"></i><span class="btn-label"> Surprise Me!</span></button>
+                <button id="fav-toggle" title="Favorites"><i class="fa fa-star"></i><span class="btn-label"> Favorites</span></button>
+            </div>
         </div>
+
+        <details id="recent-section">
+            <summary>Recently Viewed</summary>
+            <ul id="recent-list"></ul>
+        </details>
         
         <div id="destinations-list"></div>
 
@@ -121,15 +148,32 @@
     </div>
 
     <button id="scroll-top" class="fab-top" aria-label="Back to top"><i class="fa fa-arrow-up"></i></button>
+    <button id="trip-fab" class="fab-trip" aria-label="Plan route"><i class="fa fa-route"></i> <span id="trip-count">0</span></button>
 
     <div class="modal-overlay"></div>
     <div class="modal" id="note-modal">
         <h3 id="modal-title"></h3>
         <p id="modal-content"></p>
         <ul id="modal-icons"></ul>
-        <!-- <button onclick="closeModal()">Close</button> -->
         <button class="modal-close" onclick="closeModal()">Close</button>
         <button class="modal-reroll" id="reroll-btn" onclick="reroll()"><i class="fa fa-shuffle"></i> Try Another</button>
+        <button class="modal-trip-btn" id="modal-trip-btn"><i class="fa fa-plus-circle"></i> <span id="modal-trip-label">Add to Trip</span></button>
+    </div>
+
+    <div class="modal" id="trip-modal">
+        <h3><i class="fa fa-route"></i> Trip Planner</h3>
+        <p id="trip-empty">Add destinations using the <i class="fa fa-plus-circle"></i> icon on each card.</p>
+        <p id="trip-disclaimer" class="trip-disclaimer"><i class="fa fa-info-circle"></i> Routes are generated using place names — verify stops in Google Maps before riding.</p>
+        <ul id="trip-list"></ul>
+        <div id="trip-circuit">
+            <label><input type="checkbox" id="trip-start-blr"> Start from Bengaluru</label>
+            <label><input type="checkbox" id="trip-end-blr"> Return to Bengaluru</label>
+        </div>
+        <div id="trip-actions">
+            <a id="trip-open" class="modal-map-link" href="#" target="_blank" rel="noopener"><i class="fa fa-map-location-dot"></i> Open Route in Google Maps</a>
+            <button class="modal-close" onclick="clearTrip()"><i class="fa fa-trash"></i> Clear All</button>
+        </div>
+        <button class="modal-close" onclick="closeTripModal()">Close</button>
     </div>
 
     <script src="script.js"></script>

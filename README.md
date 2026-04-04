@@ -6,16 +6,23 @@ A static, mobile-first destinations repository for riders in and around Bengalur
 
 ### Browse & Navigate
 - **500+ destinations** across 9 exit routes from Bengaluru (Tumakuru, Hassana, Magadi, Mysuru, Kanakapura, Hosur, Hoskote, Devanahalli, Special Routes)
+- **Show All** — combine every destination into one searchable, filterable list when you don't care about the route
 - **Search** — filter destinations by name or notes
-- **Sort** — alphabetically or by distance from Bengaluru
+- **Sort** — alphabetically (A–Z / Z–A) or by distance from Bengaluru (near / far)
 - **State filter** — narrow down by state (Karnataka, Kerala, Tamil Nadu, etc.)
+- **Distance filter** — preset ranges (under 100 km, 100–200 km, 200–300 km, 300–500 km, 500+ km) to plan by ride length
 - **Pagination** — 25 destinations per page with First/Previous/Next/Last controls
+- **Per-exit counts** — each dropdown option shows how many destinations it contains
 
 ### Discover
-- **Surprise Me!** — random destination picker from the current filtered list, with a reroll button to try another
+- **Surprise Me!** — random destination picker from the current filtered list, with a reroll button to try another and an option to add the pick to your trip
+- **Alternate routes** — destinations reachable via multiple exits show all route options with per-route distance and notes
 - **Icon tags** — each destination can show icons for accessibility (car/motorcycle), terrain (trekking, forest), type (temple, waterfall, food), caution, entry fee, and more
 - **Collapsible icon legend** — tap to expand/collapse the full icon reference
+- **Icon filter** — tap any icon in the legend to filter destinations by that type (e.g. show only waterfalls, only temples)
 - **Destination count badge** — shows how many destinations match your current filters
+- **Recently viewed** — last 5 clicked destinations are remembered across sessions for quick access
+- **Trip planner** — add multiple destinations to a trip (from cards or modals), reorder stops with ▲/▼ buttons, optionally start/end at Bengaluru, and open the full route in Google Maps
 
 ### Personalize
 - **Favorites** — star destinations to bookmark them (stored in localStorage), with a toggle to show only favorites
@@ -36,6 +43,8 @@ A static, mobile-first destinations repository for riders in and around Bengalur
 ### Design
 - Muted teal & warm neutral color scheme — optimized for outdoor sunlight readability and night sky viewing
 - Mobile-first with 44px touch targets, sticky controls, and edge-to-edge layout on small screens
+- Compact icon toolbar on mobile — sort, state, distance filters collapse to icon-only circular buttons; full text visible on desktop
+- Two-row destination cards — name with ellipsis truncation on top, metadata and actions on bottom for clean mobile portrait layout
 - Floating back-to-top button appears after scrolling down
 - Fully static — hosted on GitHub Pages with zero external dependencies beyond Google Fonts and Font Awesome
 
@@ -58,9 +67,18 @@ The tool will walk you through the following prompts:
 ```
 === TSWC Destination Manager ===
 
-Exits: tumakuru, hassana, magadi, mysuru, kanakapura, hosur, hoskote, devanahalli, specials
+Exits:
+  1. tumakuru
+  2. hassana
+  3. magadi
+  4. mysuru
+  5. kanakapura
+  6. hosur
+  7. hoskote
+  8. devanahalli
+  9. specials
 
-Exit: kanakapura
+Exit (number or name): 5
 Name: Udupi Sathkaar Gundlupete
 Link: https://maps.app.goo.gl/UK6uh3GoZtsP85LG6
 Icons (comma-separated numbers or names): 6
@@ -80,20 +98,24 @@ State: Karnataka
 
 Add this entry? (y/n): y
 Done! Added "Udupi Sathkaar Gundlupete" in kanakapura.
+
+Add/update another? (y/n): n
 ```
 
 ### Adding a new destination
 
 1. Run `node manage.js`
-2. Enter the exit route and destination name
-3. Fill in the fields — only **name** and **link** are required, the rest are optional
-4. Review the preview and confirm with `y`
-5. The entry is inserted alphabetically into the correct exit array in `script.js`
+2. Select the exit route by number or name
+3. Enter the destination name
+4. Fill in the fields — only **name** and **link** are required, the rest are optional
+5. Review the preview and confirm with `y`
+6. The entry is inserted alphabetically into the correct exit array in `script.js`
+7. Choose to add/update another or exit
 
 ### Updating an existing destination
 
 1. Run `node manage.js`
-2. Enter the same exit route and exact destination name
+2. Select the same exit route and enter the exact destination name
 3. The tool detects the existing entry and shows its current values
 4. Press **Enter** to keep a field's current value, or type a new value to replace it
 5. Review and confirm — the entry is updated in place
@@ -121,6 +143,18 @@ Select icons by number during the prompt:
 | 15 | `fa-leaf` | Garden / Park |
 
 Multiple icons: enter comma-separated numbers, e.g. `1,2,5` for Car + Motorcycle + Temple.
+
+### Alternate routes
+
+Some destinations are reachable via multiple exits. Use the `Alt exits` prompt to specify alternate routes:
+
+```
+Alt exits (comma-separated numbers or names): 6
+  Note for hosur route: Via Hosur Highway — longer but no time restrictions
+  Distance via hosur: 280
+```
+
+This adds an `altExits` array to the entry. The website shows these alternate routes in the destination's info modal.
 
 ## Files
 

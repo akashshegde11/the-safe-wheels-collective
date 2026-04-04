@@ -1,10 +1,10 @@
 const destinations = {
   tumakuru: [
     {
-      name: "Anashi Falls",
+      name: "Anshi Falls",
       link: "https://maps.app.goo.gl/qYtjkGiz4tX35APd9",
       icons: ["fa-droplet", "fa-tree", "fa-s"],
-      note: "Scenic waterfalls through a beautiful forest with a lovely twisties section.",
+      note: "Scenic waterfalls through a beautiful forest with a lovely twisties section. November 2025 update - road conditions have degraded massively, pretty much off-roading.",
       distance: 490,
       state: "Karnataka"
     },
@@ -13,44 +13,61 @@ const destinations = {
       link: "https://maps.app.goo.gl/CNnSWgoFufau9xYe8",
       icons: ["fa-gopuram"],
       note: "Ancient Jain temple with beautiful stone carvings.",
-      distance: 100
+      distance: 100,
+      state: "Karnataka"
     },
     {
       name: "Ancient Shri Venkataramana Swamy Temple Medigeshi",
       link: "https://maps.app.goo.gl/rTdVeAe7kwtq569C9",
-      icons: ["fa-gopuram"]
+      icons: ["fa-gopuram"],
+      distance: 130,
+      state: "Karnataka"
     },
     {
       name: "Anjanadri Betta (Kishkindha)",
       link: "https://maps.app.goo.gl/fXtdbfTj1pLi4T538",
-      icons: ["fa-gopuram", "fa-hiking"]
+      icons: ["fa-gopuram", "fa-hiking"],
+      note: "Birthplace of Lord Hanuman, 575 steps climb to the top",
+      distance: 365,
+      state: "Karnataka"
     },
     {
       name: "Apsarakonda Waterfalls",
-      link: "https://maps.app.goo.gl/tXFfSptBNWKaTti66"
+      link: "https://maps.app.goo.gl/tXFfSptBNWKaTti66",
+      icons: ["fa-car", "fa-motorcycle", "fa-hiking", "fa-droplet", "fa-tree", "fa-indian-rupee-sign", "fa-leaf"],
+      distance: 490,
+      state: "Karnataka"
     },
     {
       name: "Beeranakallu Betta Temple",
       link: "https://maps.app.goo.gl/cgAqywhpVimU332eA",
-      icons: ["fa-hiking", "fa-triangle-exclamation", "fa-gopuram"]
+      icons: ["fa-hiking", "fa-triangle-exclamation", "fa-gopuram"],
+      distance: 80,
+      state: "Karnataka"
     },
     {
       name: "Bheemana Gudda",
       link: "https://maps.app.goo.gl/UCTGGWjSkdXfCbbv8",
-      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation"]
+      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation", "fa-indian-rupee-sign"],
+      note: "Very scenic viewpoint overlooking the Aghnashini River, recommended to go for sunset. Entry fee as of 2025 - 10 for bike, 20 for car.",
+      distance: 450,
+      state: "Karnataka"
     },
     {
       name: "Borana Kanive Reservoir",
-      link: "https://maps.app.goo.gl/twzHS8HVgR3KyZJ5A"
+      link: "https://maps.app.goo.gl/twzHS8HVgR3KyZJ5A",
+      state: "Karnataka"
     },
     {
       name: "BREN Raceway",
       link: "https://maps.app.goo.gl/VjNS8bTh3SgURFqR6",
-      icons: ["fa-x", "fa-flag-checkered"]
+      icons: ["fa-x", "fa-flag-checkered"],
+      state: "Karnataka"
     },
     {
       name: "Burude Falls",
-      link: "https://maps.app.goo.gl/KmY7brWpjSzU3H6LA"
+      link: "https://maps.app.goo.gl/KmY7brWpjSzU3H6LA",
+      state: "Karnataka"
     },
     {
       name: "Chandravalli Archaeological Site",
@@ -62,7 +79,8 @@ const destinations = {
     },
     {
       name: "Channarayana Durga Fort",
-      link: "https://maps.app.goo.gl/zFvK3Vy6WdL6yEsU8"
+      link: "https://maps.app.goo.gl/zFvK3Vy6WdL6yEsU8",
+      state: "Karnataka"
     },
     {
       name: "Chinaga Bettada Shri Ranganathaswamy Temple",
@@ -71,22 +89,26 @@ const destinations = {
     },
     {
       name: "Chitradurga Fort",
-      link: "https://maps.app.goo.gl/f8GT9nXjyyYYwTBA9"
+      link: "https://maps.app.goo.gl/f8GT9nXjyyYYwTBA9",
+      state: "Karnataka"
     },
     {
       name: "Devarayanadurga Betta (DD Hills)",
       link: "https://maps.app.goo.gl/f1A8deHqbmh1SUSW9",
-      icons: ["fa-motorcycle", "fa-car", "fa-hiking"]
+      icons: ["fa-motorcycle", "fa-car", "fa-hiking"],
+      state: "Karnataka"
     },
     {
       name: "Devarayanadurga Katte",
       link: "https://maps.app.goo.gl/AmPLLNKJp45enXNC8",
-      icons: ["fa-motorcycle", "fa-car"]
+      icons: ["fa-motorcycle", "fa-car"],
+      state: "Karnataka"
     },
     {
       name: "Devimane",
       link: "https://maps.app.goo.gl/jMGYCQqcx5FowR8Q9",
-      icons: ["fa-motorcycle", "fa-triangle-exclamation"]
+      icons: ["fa-motorcycle", "fa-triangle-exclamation"],
+      state: "Karnataka"
     },
     {
       name: "Dharamshala Cricket Stadium",
@@ -109,11 +131,13 @@ const destinations = {
     },
     {
       name: "Hampi Lake View Point",
-      link: "https://maps.app.goo.gl/3Ezn3VL7Jaq2C5pLA"
+      link: "https://maps.app.goo.gl/3Ezn3VL7Jaq2C5pLA",
+      state: "Karnataka"
     },
     {
       name: "Honnemaradu",
-      link: "https://maps.app.goo.gl/Xo1ayxN3vLBez7hX7"
+      link: "https://maps.app.goo.gl/Xo1ayxN3vLBez7hX7",
+      state: "Karnataka"
     },
     {
       name: "Hulukudi Betta",
@@ -122,11 +146,13 @@ const destinations = {
     {
       name: "Jog Falls",
       link: "https://maps.app.goo.gl/nexuo9zMne6gzhfDA",
-      icons: ["fa-motorcycle", "fa-car"]
+      icons: ["fa-motorcycle", "fa-car"],
+      state: "Karnataka"
     },
     {
       name: "Kadra Dam",
-      link: "https://maps.app.goo.gl/TUL3GnC4R77YBhe2A"
+      link: "https://maps.app.goo.gl/TUL3GnC4R77YBhe2A",
+      state: "Karnataka"
     },
     {
       name: "Kaggaladu Bird Sanctuary",
@@ -134,11 +160,13 @@ const destinations = {
     },
     {
       name: "Kaiga Power Plant Viewpoint",
-      link: "https://maps.app.goo.gl/2aamT23iEYEEQD486"
+      link: "https://maps.app.goo.gl/2aamT23iEYEEQD486",
+      state: "Karnataka"
     },
     {
       name: "Kaiga Waterfalls",
-      link: "https://maps.app.goo.gl/1brQkrKgWjkf8s1NA"
+      link: "https://maps.app.goo.gl/1brQkrKgWjkf8s1NA",
+      state: "Karnataka"
     },
     {
       name: "Kalo Dungar",
@@ -146,15 +174,18 @@ const destinations = {
     },
     {
       name: "Kasturi Rangappa Nayaka Fort",
-      link: "https://maps.app.goo.gl/mUqki6n2xJbUFR4F6"
+      link: "https://maps.app.goo.gl/mUqki6n2xJbUFR4F6",
+      state: "Karnataka"
     },
     {
       name: "Kote Kallappana Betta",
-      link: "https://maps.app.goo.gl/MEwt4V8b8N7mZ4KXA"
+      link: "https://maps.app.goo.gl/MEwt4V8b8N7mZ4KXA",
+      state: "Karnataka"
     },
     {
       name: "Linganamakki Dam",
-      link: "https://maps.app.goo.gl/4j8yzukxpfXK89ueA"
+      link: "https://maps.app.goo.gl/4j8yzukxpfXK89ueA",
+      state: "Karnataka"
     },
     {
       name: "Lotus Mahal",
@@ -163,7 +194,8 @@ const destinations = {
     {
       name: "Madhugiri Fort",
       link: "https://maps.app.goo.gl/AfLJ7UqHHaSWvcbq8",
-      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation"]
+      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation"],
+      state: "Karnataka"
     },
     {
       name: "Magnetic Hill",
@@ -171,12 +203,14 @@ const destinations = {
     },
     {
       name: "Magod Waterfalls",
-      link: "https://maps.app.goo.gl/uASQvXFRfwvtXSN96"
+      link: "https://maps.app.goo.gl/uASQvXFRfwvtXSN96",
+      state: "Karnataka"
     },
     {
       name: "Mandaragiri Hill",
       link: "https://maps.app.goo.gl/i8pW4tAKWWVNURdPA",
-      icons: ["fa-motorcycle", "fa-car", "fa-hiking"]
+      icons: ["fa-motorcycle", "fa-car", "fa-hiking"],
+      state: "Karnataka"
     },
     {
       name: "Matanga Hill",
@@ -184,7 +218,8 @@ const destinations = {
     },
     {
       name: "Mattighatta Falls",
-      link: "https://maps.app.goo.gl/DXDYMoxXBydfXV7z7"
+      link: "https://maps.app.goo.gl/DXDYMoxXBydfXV7z7",
+      state: "Karnataka"
     },
     {
       name: "Mohini Shikhara",
@@ -193,34 +228,41 @@ const destinations = {
     {
       name: "Mydala Lake",
       link: "https://maps.app.goo.gl/oCnWXbfwtJ3k2zhq5",
-      icons: ["fa-motorcycle", "fa-car", "fa-hiking"]
+      icons: ["fa-motorcycle", "fa-car", "fa-hiking"],
+      state: "Karnataka"
     },
     {
       name: "Naval Beach Karwar",
       link: "https://maps.app.goo.gl/PnfcVNeUpmLkmQVw5",
-      icons: ["fa-motorcycle", "fa-car"]
+      icons: ["fa-motorcycle", "fa-car"],
+      state: "Karnataka"
     },
     {
       name: "Naamadha Chilume",
       link: "https://maps.app.goo.gl/wX4anvvan1h9NRZ69",
-      icons: ["fa-motorcycle", "fa-car"]
+      icons: ["fa-motorcycle", "fa-car"],
+      state: "Karnataka"
     },
     {
       name: "Nigundi Nature Viewpoint",
-      link: "https://maps.app.goo.gl/dJfFkEJ7nJNWeXXp9"
+      link: "https://maps.app.goo.gl/dJfFkEJ7nJNWeXXp9",
+      state: "Karnataka"
     },
     {
       name: "Nijagal Betta Kote",
-      link: "https://maps.app.goo.gl/ZhpXbnb3rdxkGi4d8"
+      link: "https://maps.app.goo.gl/ZhpXbnb3rdxkGi4d8",
+      state: "Karnataka"
     },
     {
       name: "Om Beach",
       link: "https://maps.app.goo.gl/5TXn1Nu2nMF7LgqR6",
-      icons: ["fa-motorcycle", "fa-car"]
+      icons: ["fa-motorcycle", "fa-car"],
+      state: "Karnataka"
     },
     {
       name: "Onake Obavvana Kindi",
-      link: "https://maps.app.goo.gl/v6YxFV6eiAojTPoq9"
+      link: "https://maps.app.goo.gl/v6YxFV6eiAojTPoq9",
+      state: "Karnataka"
     },
     {
       name: "Pingleshwar Mahadev Beach",
@@ -239,12 +281,14 @@ const destinations = {
     {
       name: "Sadashivagada Fort",
       link: "https://maps.app.goo.gl/VtFJQQVxZnmSkSnn9",
-      icons: ["fa-motorcycle", "fa-car", "fa-hiking"]
+      icons: ["fa-motorcycle", "fa-car", "fa-hiking"],
+      state: "Karnataka"
     },
     {
       name: "Sahasralinga",
       link: "https://maps.app.goo.gl/SE9k9er8nuWVjap19",
-      icons: ["fa-motorcycle", "fa-car", "fa-triangle-exclamation"]
+      icons: ["fa-motorcycle", "fa-car", "fa-triangle-exclamation"],
+      state: "Karnataka"
     },
     {
       name: "Sanapur Lake",
@@ -267,12 +311,14 @@ const destinations = {
     {
       name: "Shree Ramalingeshwara Swamy Temple Baradi",
       link: "https://maps.app.goo.gl/G49eRfLYwudPEmsX9",
-      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation"]
+      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation"],
+      state: "Karnataka"
     },
     {
       name: "Shree Vijaya Vitthala Temple",
       link: "https://maps.app.goo.gl/pruGEEbUUsBGrrZy8",
-      icons: ["fa-gopuram"]
+      icons: ["fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Shri Adi Shankaracharya Temple Srinagar",
@@ -288,41 +334,49 @@ const destinations = {
     {
       name: "Shri Idagunji Mahaganapati Temple",
       link: "https://maps.app.goo.gl/GrBTRkvVt9eXtier7",
-      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"]
+      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Shri Karikaana Parameshwari Ammanavara Temple",
       link: "https://maps.app.goo.gl/cAg2or6UgCDKDm9d8",
-      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"]
+      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Shri Kulle Kalleshwara Temple",
       link: "https://maps.app.goo.gl/QTfa77xnPp1q6MuL6",
-      icons: ["fa-motorcycle", "fa-car", "fa-triangle-exclamation", "fa-gopuram"]
+      icons: ["fa-motorcycle", "fa-car", "fa-triangle-exclamation", "fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Shri Madhukeshwara Temple (Banavasi)",
       link: "https://maps.app.goo.gl/3LmsenUiLiCnkxio9",
-      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"]
+      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Shri Mahabaleshwara Temple (Gokarna)",
       link: "https://maps.app.goo.gl/N3EL4ivnhcFFtu1VA",
-      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"]
+      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Shri Marikamba Devi Temple",
       link: "https://maps.app.goo.gl/oDCg7iYAc3TiVtxK6",
-      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"]
+      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Shri Murudeshwara Shiva Temple",
       link: "https://maps.app.goo.gl/rJFPxHWk136LiPxt9",
-      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"]
+      icons: ["fa-motorcycle", "fa-car", "fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Siddara Betta",
-      link: "https://maps.app.goo.gl/xkfh4RE2mBBmfuDB8"
+      link: "https://maps.app.goo.gl/xkfh4RE2mBBmfuDB8",
+      state: "Karnataka"
     },
     {
       name: "Sri Ahobala Narasimha Swamy Temple",
@@ -343,16 +397,19 @@ const destinations = {
     {
       name: "Sri Shivagange Temple",
       link: "https://maps.app.goo.gl/MeLRQDQ1FY6xfF8GA",
-      icons: ["fa-gopuram"]
+      icons: ["fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Sri Uttare Siddeshwara Swami Gudi",
       link: "https://maps.app.goo.gl/XSPCVszXz3xy7UB28",
-      icons: ["fa-gopuram"]
+      icons: ["fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Sunset Point Hippie Island",
-      link: "https://maps.app.goo.gl/bSoGy2b5Ndwu44GC7"
+      link: "https://maps.app.goo.gl/bSoGy2b5Ndwu44GC7",
+      state: "Karnataka"
     },
     {
       name: "Sunset Point Mount Abu",
@@ -360,17 +417,20 @@ const destinations = {
     },
     {
       name: "Tungabhadraa Dam Lighthouse Viewpoint",
-      link: "https://maps.app.goo.gl/H1BpuUHAiioxpnQC6"
+      link: "https://maps.app.goo.gl/H1BpuUHAiioxpnQC6",
+      state: "Karnataka"
     },
     {
       name: "Unchalli Falls Viewpoint",
       link: "https://maps.app.goo.gl/Fow7uebGXsAcfGRWA",
-      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation"]
+      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation"],
+      state: "Karnataka"
     },
     {
       name: "Vani Vilasa Sagara Dam",
       link: "https://maps.app.goo.gl/a3khAFonu6tSwobQA",
-      icons: ["fa-droplet"]
+      icons: ["fa-droplet"],
+      state: "Karnataka"
     },
     {
       name: "Vijay Villas Palace",
@@ -379,17 +439,20 @@ const destinations = {
     {
       name: "Virupaksha Temple Hampi",
       link: "https://maps.app.goo.gl/ZHmyqqc65idx46JD9",
-      icons: ["fa-gopuram"]
+      icons: ["fa-gopuram"],
+      state: "Karnataka"
     },
     {
       name: "Yana Rocks",
       link: "https://maps.app.goo.gl/FGMYafdfYnvUpkRj9",
-      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation"]
+      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation"],
+      state: "Karnataka"
     },
     {
       name: "Yana Shri Mahaganapati Temple",
       link: "https://maps.app.goo.gl/qhoPZnDV4FtXzDvZA",
-      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation", "fa-gopuram"]
+      icons: ["fa-motorcycle", "fa-car", "fa-hiking", "fa-triangle-exclamation", "fa-gopuram"],
+      state: "Karnataka"
     }
   ],
   hassana: [
@@ -2223,24 +2286,47 @@ const destinations = {
 
 const exitSelect = document.getElementById("exit-select");
 const savedExit = localStorage.getItem('tswc-exit');
-if (savedExit && destinations[savedExit]) exitSelect.value = savedExit;
+if (savedExit && (savedExit === 'all' || destinations[savedExit])) exitSelect.value = savedExit;
 
 const destinationsList = document.getElementById("destinations-list");
 const searchInput = document.getElementById('search-input');
 const sortSelect = document.getElementById('sort-select');
 const stateFilter = document.getElementById('state-filter');
+const distanceFilter = document.getElementById('distance-filter');
 const paginationControls = document.getElementById('pagination-controls');
 const modalOverlay = document.querySelector('.modal-overlay');
 const noteModal = document.getElementById('note-modal');
 const modalTitle = document.getElementById('modal-title');
 const modalContent = document.getElementById('modal-content');
 const modalIcons = document.getElementById('modal-icons');
+let currentModalDest = null;
+const modalTripBtn = document.getElementById('modal-trip-btn');
+const modalTripLabel = document.getElementById('modal-trip-label');
+
+function updateModalTripBtn() {
+    const inTrip = tripStops.some(s => s.name === currentModalDest);
+    modalTripLabel.textContent = inTrip ? 'Remove from Trip' : 'Add to Trip';
+    modalTripBtn.classList.toggle('active', inTrip);
+}
+
+modalTripBtn.addEventListener('click', function () {
+    if (currentModalDest) {
+        toggleTripStop(currentModalDest);
+        updateModalTripBtn();
+    }
+});
+
+function getDestinationsForExit(val) {
+    if (val === 'all') return Object.values(destinations).flat();
+    return destinations[val] || [];
+}
 
 const itemsPerPage = 25;
 let currentPage = 1;
-let selectedDestinations = destinations[exitSelect.value];
+let selectedDestinations = getDestinationsForExit(exitSelect.value);
 let currentDisplayData = selectedDestinations;
 let showFavoritesOnly = false;
+let activeIconFilter = null;
 const favorites = new Set(JSON.parse(localStorage.getItem('tswc-favorites') || '[]'));
 
 function toggleFavorite(name) {
@@ -2273,6 +2359,25 @@ function toggleFavorite(name) {
 // exitSelect.dispatchEvent(new Event("change"));
 
 const canShare = !!navigator.share;
+const tripStops = [];
+const recentList = document.getElementById('recent-list');
+const recentSection = document.getElementById('recent-section');
+let recentViewed = JSON.parse(localStorage.getItem('tswc-recent') || '[]');
+
+function addRecent(name, link) {
+    recentViewed = recentViewed.filter(r => r.name !== name);
+    recentViewed.unshift({ name, link });
+    if (recentViewed.length > 5) recentViewed.length = 5;
+    localStorage.setItem('tswc-recent', JSON.stringify(recentViewed));
+    renderRecent();
+}
+
+function renderRecent() {
+    recentSection.style.display = recentViewed.length ? '' : 'none';
+    recentList.innerHTML = recentViewed.map(r =>
+        `<li><i class="fa fa-clock-rotate-left"></i><a href="${r.link}" target="_blank">${r.name}</a></li>`
+    ).join('');
+}
 
 function renderDestinations(data) {
     destinationsList.innerHTML = '';
@@ -2280,14 +2385,21 @@ function renderDestinations(data) {
         const isFav = favorites.has(destination.name);
         destinationsList.innerHTML += `
             <div class="destination">
-                <i class="fa fa-star fav-icon${isFav ? ' active' : ''}" data-name="${destination.name}"></i>
-                <a href="${destination.link}" target="_blank">${destination.name}</a>
-                <span>${destination.distance !== undefined ? "(" + destination.distance + " km)" : ""}</span>
-                ${destination.state ? `<span class="state-badge">${destination.state}</span>` : ''}
-                ${destination.note ? `<i class="fa fa-info-circle note-icon" data-index="${index}"></i>` : ''}
-                ${canShare ? `<i class="fa fa-share-nodes share-icon" data-name="${destination.name}" data-link="${destination.link}"></i>` : ''}
-                <div class="icons">
-                    ${(destination.icons || []).map(icon => `<i class="fa ${icon}"></i>`).join(' ')}
+                <div class="dest-row-top">
+                    <i class="fa fa-star fav-icon${isFav ? ' active' : ''}" data-name="${destination.name}"></i>
+                    <a href="${destination.link}" target="_blank">${destination.name}</a>
+                    <span class="dest-dist">${destination.distance !== undefined ? "(" + destination.distance + " km)" : ""}</span>
+                </div>
+                <div class="dest-row-bottom">
+                    <div class="dest-meta">
+                        ${destination.state ? `<span class="state-badge">${destination.state}</span>` : ''}
+                        <span class="icons">${(destination.icons || []).map(icon => `<i class="fa ${icon}"></i>`).join(' ')}</span>
+                    </div>
+                    <span class="dest-actions">
+                        ${destination.note || destination.altExits ? `<i class="fa fa-info-circle note-icon" data-index="${index}"></i>` : ''}
+                        ${canShare ? `<i class="fa fa-share-nodes share-icon" data-name="${destination.name}" data-link="${destination.link}"></i>` : ''}
+                        <i class="fa fa-plus-circle trip-add-icon${tripStops.some(s => s.name === destination.name) ? ' active' : ''}" data-name="${destination.name}"></i>
+                    </span>
                 </div>
             </div>
         `;
@@ -2301,6 +2413,31 @@ function renderDestinations(data) {
             navigator.share({ title: this.dataset.name, url: this.dataset.link });
         });
     });
+    document.querySelectorAll('.trip-add-icon').forEach(icon => {
+        icon.addEventListener('click', function () {
+            toggleTripStop(this.dataset.name);
+        });
+    });
+    destinationsList.querySelectorAll('.dest-row-top > a').forEach(link => {
+        link.addEventListener('click', function () {
+            addRecent(this.textContent, this.href);
+        });
+    });
+}
+
+function renderAltExits(altExits) {
+    if (!altExits || !altExits.length) return '';
+    return '<div class="alt-routes">' +
+        '<strong><i class="fa fa-route"></i> Also reachable via</strong>' +
+        altExits.map(a => {
+            const exitLabel = (exitSelect.querySelector(`option[value="${a.exit}"]`) || {}).textContent || a.exit;
+            return '<div class="alt-route-item">' +
+                `<span class="alt-route-exit">${exitLabel.split(' \u2014')[0]}</span>` +
+                (a.distance !== undefined ? ` <span class="alt-route-dist">${a.distance} km</span>` : '') +
+                (a.note ? `<div class="alt-route-note">${a.note}</div>` : '') +
+                '</div>';
+        }).join('') +
+        '</div>';
 }
 
 function attachNoteListeners(data) {
@@ -2309,8 +2446,12 @@ function attachNoteListeners(data) {
             const index = this.dataset.index;
             const destination = data[index];
             modalTitle.textContent = destination.name;
-            modalContent.textContent = destination.note;
+            modalContent.innerHTML = (destination.note ? `<span>${destination.note}</span><br><br>` : '') +
+                renderAltExits(destination.altExits) +
+                `<a href="${destination.link}" target="_blank" rel="noopener" class="modal-map-link"><i class="fa fa-map-location-dot"></i> Open in Google Maps</a>`;
             modalIcons.innerHTML = (destination.icons || []).map(icon => `<li><i class="fa ${icon}"></i> ${getIconDescription(icon)}</li>`).join('');
+            currentModalDest = destination.name;
+            updateModalTripBtn();
             modalOverlay.classList.add('show');
             noteModal.classList.add('show');
         });
@@ -2389,21 +2530,35 @@ function populateStateFilter() {
 function getFilteredData() {
     const query = searchInput.value.toLowerCase();
     const state = stateFilter.value;
+    const distRange = distanceFilter.value;
     const sortKey = sortSelect.value;
 
     let data = selectedDestinations.filter(d => {
         const matchesSearch = (d.name || '').toLowerCase().includes(query) || (d.note || '').toLowerCase().includes(query);
         const matchesState = state === 'all' || d.state === state;
         const matchesFav = !showFavoritesOnly || favorites.has(d.name);
-        return matchesSearch && matchesState && matchesFav;
+        const matchesIcon = !activeIconFilter || (d.icons && d.icons.includes(activeIconFilter));
+        let matchesDist = true;
+        if (distRange !== 'all') {
+            if (d.distance === undefined) { matchesDist = false; }
+            else if (distRange === '500+') { matchesDist = d.distance >= 500; }
+            else { const [min, max] = distRange.split('-').map(Number); matchesDist = d.distance >= min && d.distance < max; }
+        }
+        return matchesSearch && matchesState && matchesFav && matchesDist && matchesIcon;
     });
 
     data = [...data].sort((a, b) => {
         if (sortKey === 'name') return a.name.localeCompare(b.name);
+        if (sortKey === 'name-desc') return b.name.localeCompare(a.name);
         if (sortKey === 'distance') {
             if (a.distance === undefined) return 1;
             if (b.distance === undefined) return -1;
             return a.distance - b.distance;
+        }
+        if (sortKey === 'distance-desc') {
+            if (a.distance === undefined) return 1;
+            if (b.distance === undefined) return -1;
+            return b.distance - a.distance;
         }
     });
 
@@ -2415,10 +2570,13 @@ function applyFilters() {
 }
 
 exitSelect.addEventListener('change', function () {
-    selectedDestinations = destinations[this.value];
+    selectedDestinations = getDestinationsForExit(this.value);
     localStorage.setItem('tswc-exit', this.value);
     searchInput.value = '';
     stateFilter.value = 'all';
+    distanceFilter.value = 'all';
+    activeIconFilter = null;
+    document.querySelectorAll('#icon-legend li').forEach(l => l.classList.remove('active'));
     sortSelect.value = 'name';
     populateStateFilter();
     applyFilters();
@@ -2427,6 +2585,7 @@ exitSelect.addEventListener('change', function () {
 searchInput.addEventListener('input', applyFilters);
 sortSelect.addEventListener('change', applyFilters);
 stateFilter.addEventListener('change', applyFilters);
+distanceFilter.addEventListener('change', applyFilters);
 
 document.getElementById('fav-toggle').addEventListener('click', function () {
     showFavoritesOnly = !showFavoritesOnly;
@@ -2463,12 +2622,15 @@ function showRandomPick() {
     modalTitle.textContent = '🎲 ' + pick.name;
     modalContent.innerHTML =
         (pick.note ? `<span>${pick.note}</span><br><br>` : '') +
+        renderAltExits(pick.altExits) +
         `<a href="${pick.link}" target="_blank" rel="noopener" class="modal-map-link"><i class="fa fa-map-location-dot"></i> Open in Google Maps</a>`;
     modalIcons.innerHTML =
         (pick.state ? `<li><i class="fa fa-location-dot"></i> ${pick.state}</li>` : '') +
         (pick.distance !== undefined ? `<li><i class="fa fa-road"></i> ${pick.distance} km from Bengaluru</li>` : '') +
         (pick.icons || []).map(i => `<li><i class="fa ${i}"></i> ${getIconDescription(i)}</li>`).join('');
     document.getElementById('reroll-btn').style.display = 'inline-block';
+    currentModalDest = pick.name;
+    updateModalTripBtn();
     modalOverlay.classList.add('show');
     noteModal.classList.add('show');
 }
@@ -2483,7 +2645,118 @@ document.addEventListener('keydown', function (e) {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') return;
     if (e.key === '/' ) { e.preventDefault(); searchInput.focus(); }
     if (e.key === 'r' || e.key === 'R') showRandomPick();
-    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Escape') { closeModal(); closeTripModal(); }
+});
+
+exitSelect.querySelectorAll('option').forEach(o => {
+    o.textContent += ` — ${getDestinationsForExit(o.value).length} destinations`;
+});
+
+// --- Trip Planner ---
+const tripFab = document.getElementById('trip-fab');
+const tripCountEl = document.getElementById('trip-count');
+const tripModal = document.getElementById('trip-modal');
+const tripList = document.getElementById('trip-list');
+const tripEmpty = document.getElementById('trip-empty');
+const tripActions = document.getElementById('trip-actions');
+const tripOpenLink = document.getElementById('trip-open');
+const tripStartBlr = document.getElementById('trip-start-blr');
+const tripEndBlr = document.getElementById('trip-end-blr');
+const BLR = 'Bengaluru, Karnataka, India';
+
+function toggleTripStop(name, link) {
+    const idx = tripStops.findIndex(s => s.name === name);
+    if (idx >= 0) tripStops.splice(idx, 1);
+    else {
+        const all = getDestinationsForExit('all');
+        const dest = all.find(d => d.name === name);
+        const query = name + (dest && dest.state ? ', ' + dest.state : '') + ', India';
+        tripStops.push({ name, query });
+    }
+    updateTripUI();
+    applyFilters();
+}
+
+function updateTripUI() {
+    tripCountEl.textContent = tripStops.length;
+    tripFab.classList.toggle('visible', tripStops.length >= 1);
+}
+
+function buildTripUrl() {
+    const startBlr = tripStartBlr.checked;
+    const endBlr = tripEndBlr.checked;
+    if (!tripStops.length) return '#';
+    const parts = [];
+    if (startBlr) parts.push(BLR);
+    parts.push(...tripStops.map(s => s.query));
+    if (endBlr) parts.push(BLR);
+    return 'https://www.google.com/maps/dir/' + parts.map(p => encodeURIComponent(p)).join('/');
+}
+
+function openTripModal() {
+    const hasStops = tripStops.length > 0;
+    tripEmpty.style.display = hasStops ? 'none' : 'block';
+    tripActions.style.display = hasStops ? 'flex' : 'none';
+    document.getElementById('trip-circuit').style.display = hasStops ? 'flex' : 'none';
+    let html = '';
+    tripStops.forEach((s, i) => {
+        const up = i > 0 ? `<i class="fa fa-caret-up trip-move" data-idx="${i}" data-dir="-1"></i>` : '<span class="trip-move-placeholder"></span>';
+        const down = i < tripStops.length - 1 ? `<i class="fa fa-caret-down trip-move" data-idx="${i}" data-dir="1"></i>` : '<span class="trip-move-placeholder"></span>';
+        html += `<li><span class="trip-num">${i + 1}.</span><span class="trip-name">${s.name}</span>${up}${down}<i class="fa fa-xmark trip-remove" data-idx="${i}"></i></li>`;
+    });
+    tripList.innerHTML = html;
+    tripList.querySelectorAll('.trip-move').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const i = parseInt(this.dataset.idx), j = i + parseInt(this.dataset.dir);
+            [tripStops[i], tripStops[j]] = [tripStops[j], tripStops[i]];
+            openTripModal();
+        });
+    });
+    tripList.querySelectorAll('.trip-remove').forEach(btn => {
+        btn.addEventListener('click', function () {
+            tripStops.splice(parseInt(this.dataset.idx), 1);
+            updateTripUI();
+            openTripModal();
+            applyFilters();
+        });
+    });
+    if (hasStops) tripOpenLink.href = buildTripUrl();
+    modalOverlay.classList.add('show');
+    tripModal.classList.add('show');
+}
+
+function closeTripModal() {
+    modalOverlay.classList.remove('show');
+    tripModal.classList.remove('show');
+}
+
+function clearTrip() {
+    tripStops.length = 0;
+    updateTripUI();
+    closeTripModal();
+    applyFilters();
+}
+
+tripFab.addEventListener('click', openTripModal);
+tripStartBlr.addEventListener('change', () => { if (tripStops.length) tripOpenLink.href = buildTripUrl(); });
+tripEndBlr.addEventListener('change', () => { if (tripStops.length) tripOpenLink.href = buildTripUrl(); });
+
+renderRecent();
+
+document.querySelectorAll('#icon-legend li').forEach(li => {
+    li.style.cursor = 'pointer';
+    li.addEventListener('click', function () {
+        const cls = this.querySelector('i').className.split(' ').find(c => c.startsWith('fa-'));
+        if (activeIconFilter === cls) {
+            activeIconFilter = null;
+            this.classList.remove('active');
+        } else {
+            document.querySelectorAll('#icon-legend li').forEach(l => l.classList.remove('active'));
+            activeIconFilter = cls;
+            this.classList.add('active');
+        }
+        applyFilters();
+    });
 });
 
 populateStateFilter();

@@ -168,8 +168,44 @@ footer h4 {
     transform: translateY(0);
 }
 
+/* --- Controls bar (sort/state/distance + buttons) --- */
+.controls-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.controls-bar > * {
+    flex: 1;
+}
+
+.controls-bar button {
+    flex: 1 1 calc(50% - 5px);
+}
+
+.icon-select {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1 1 calc(33.33% - 7px);
+}
+
+.icon-select i {
+    position: absolute;
+    left: 10px;
+    color: var(--accent);
+    font-size: 0.85rem;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.icon-select select {
+    width: 100%;
+    margin: 0;
+    padding-left: 30px;
+}
+
 select {
-    margin: 20px 0;
     padding: 10px;
     font-size: 16px;
     font-family: 'Montserrat', Arial, sans-serif;
@@ -178,6 +214,54 @@ select {
     background: var(--bg-input);
     color: var(--text);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Recently Viewed --- */
+#recent-section {
+    margin-bottom: 16px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-legend);
+    transition: background var(--transition), border-color var(--transition);
+}
+
+#recent-section summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+#recent-list {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+}
+
+#recent-list li {
+    padding: 6px 0;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--border);
+}
+
+#recent-list li:last-child {
+    border-bottom: none;
+}
+
+#recent-list a {
+    color: var(--link);
+    text-decoration: none;
+}
+
+#recent-list a:hover {
+    text-decoration: underline;
+}
+
+#recent-list i {
+    margin-right: 6px;
+    color: var(--accent);
+    font-size: 0.8rem;
 }
 
 /* --- Destinations list --- */
@@ -190,8 +274,8 @@ select {
 /* --- Destination card --- */
 .destination {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column;
+    gap: 6px;
     padding: 12px 14px;
     margin-bottom: 10px;
     background: var(--bg-dest);
@@ -213,28 +297,57 @@ select {
     box-shadow: 0 4px 10px var(--shadow);
 }
 
-.destination a {
+.dest-row-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.dest-row-top a {
     color: var(--link);
     text-decoration: none;
     font-weight: 500;
     text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    flex: 1;
     transition: color var(--transition);
 }
 
-.destination a:hover {
+.dest-row-top a:hover {
     text-decoration: underline;
 }
 
-.destination-header {
+.dest-dist {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.dest-row-bottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 8px;
 }
 
-.destination-header .name-link {
+.dest-meta {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    min-width: 0;
+    flex-wrap: wrap;
+}
+
+.dest-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
 }
 
 /* --- Favorite icon --- */
@@ -266,8 +379,6 @@ select {
 }
 
 .icons {
-    margin-bottom: 5px;
-    margin-left: auto;
     display: flex;
     gap: 6px;
     color: var(--text-muted);
@@ -277,7 +388,6 @@ select {
 .note-icon {
     cursor: pointer;
     color: var(--accent);
-    margin-left: 10px;
     transition: transform var(--transition);
 }
 
@@ -288,7 +398,6 @@ select {
 .share-icon {
     cursor: pointer;
     color: var(--text-muted);
-    margin-left: 6px;
     font-size: 0.85rem;
     transition: color var(--transition), transform var(--transition);
 }
@@ -296,6 +405,22 @@ select {
 .share-icon:hover {
     color: var(--accent);
     transform: scale(1.2);
+}
+
+.trip-add-icon {
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    transition: color var(--transition), transform var(--transition);
+}
+
+.trip-add-icon:hover {
+    color: var(--accent);
+    transform: scale(1.2);
+}
+
+.trip-add-icon.active {
+    color: var(--accent);
 }
 
 .state-badge {
@@ -439,6 +564,81 @@ select {
     margin-right: 4px;
 }
 
+.modal-trip-btn {
+    font-family: 'Montserrat', Arial, sans-serif;
+    padding: 8px 24px;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    background-color: var(--bg-dest);
+    color: var(--text);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    margin-top: 14px;
+    margin-left: 6px;
+    transition: background-color var(--transition), transform var(--transition);
+}
+
+.modal-trip-btn:hover {
+    background-color: var(--accent);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.modal-trip-btn.active {
+    background-color: var(--accent);
+    color: white;
+}
+
+/* --- Alt routes in modal --- */
+.alt-routes {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    background: var(--bg-dest);
+    border-radius: var(--radius);
+    border-left: 3px solid var(--accent);
+    text-align: left;
+    font-size: 0.85rem;
+}
+
+.alt-routes strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.alt-routes strong i {
+    margin-right: 4px;
+    color: var(--accent);
+}
+
+.alt-route-item {
+    margin: 4px 0;
+}
+
+.alt-route-exit {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.alt-route-dist {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.alt-route-dist::before {
+    content: '·';
+    margin: 0 4px;
+}
+
+.alt-route-note {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-top: 2px;
+}
+
 .modal-map-link {
     display: inline-block;
     padding: 8px 16px;
@@ -543,6 +743,23 @@ select {
     font-size: 0.85rem;
     color: var(--text-muted);
     white-space: nowrap;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: var(--radius);
+    transition: background var(--transition), color var(--transition);
+}
+
+#icon-legend li:hover {
+    background: var(--bg-dest);
+}
+
+#icon-legend li.active {
+    background: var(--accent);
+    color: white;
+}
+
+#icon-legend li.active i {
+    color: white;
 }
 
 #icon-legend i {
@@ -551,10 +768,9 @@ select {
 }
 
 /* --- Back-to-top FAB --- */
-.fab-top {
+.fab-top, .fab-trip {
     position: fixed;
     bottom: 24px;
-    right: 24px;
     width: 48px;
     height: 48px;
     border: none;
@@ -570,18 +786,142 @@ select {
     z-index: 50;
 }
 
-.fab-top.visible {
+.fab-top {
+    right: 24px;
+}
+
+.fab-trip {
+    right: 24px;
+    bottom: 80px;
+    width: auto;
+    padding: 0 16px;
+    border-radius: 24px;
+    font-size: 0.85rem;
+    font-family: 'Montserrat', Arial, sans-serif;
+    gap: 6px;
+    display: flex;
+    align-items: center;
+}
+
+.fab-top.visible, .fab-trip.visible {
     opacity: 1;
     pointer-events: auto;
 }
 
-.fab-top:hover {
+.fab-top:hover, .fab-trip:hover {
     background: var(--accent-hover);
     transform: translateY(-2px);
 }
 
-.fab-top:active {
+.fab-top:active, .fab-trip:active {
     transform: translateY(0);
+}
+
+/* --- Trip modal --- */
+#trip-modal {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+#trip-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin: 10px 0;
+}
+
+#trip-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    margin: 4px 0;
+    background: var(--bg-dest);
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+}
+
+#trip-list .trip-num {
+    color: var(--accent);
+    font-weight: 600;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+#trip-list .trip-name {
+    flex: 1;
+}
+
+#trip-list .trip-move, #trip-list .trip-move-placeholder {
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+    color: var(--text-muted);
+}
+
+#trip-list .trip-move {
+    cursor: pointer;
+    transition: color var(--transition);
+}
+
+#trip-list .trip-move:hover {
+    color: var(--accent);
+}
+
+#trip-list .trip-remove {
+    cursor: pointer;
+    color: var(--text-muted);
+    margin-left: 8px;
+    flex-shrink: 0;
+    transition: color var(--transition);
+}
+
+#trip-list .trip-remove:hover {
+    color: #c0392b;
+}
+
+#trip-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 12px 0 6px;
+}
+
+#trip-empty {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.trip-disclaimer {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin: 8px 0 4px;
+}
+
+.trip-disclaimer i {
+    margin-right: 4px;
+    color: var(--accent);
+}
+
+#trip-circuit {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    margin: 10px 0;
+    font-size: 0.85rem;
+}
+
+#trip-circuit label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    color: var(--text);
+}
+
+#trip-circuit input {
+    accent-color: var(--accent);
 }
 
 /* --- Count badge --- */
@@ -695,8 +1035,63 @@ select {
         top: 0;
         z-index: 10;
         background: var(--bg-card);
-        padding: 10px 0;
-        margin-bottom: 10px;
+        padding: 10px 14px;
+        margin: 0 -14px 10px;
+        width: calc(100% + 28px);
+    }
+
+    .controls-bar {
+        flex-wrap: nowrap;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .controls-bar > * {
+        flex: 0 0 auto;
+    }
+
+    .icon-select select {
+        font-size: 0;
+        padding-left: 0;
+        text-align: center;
+        color: transparent;
+        width: 44px;
+        height: 44px;
+        min-height: 44px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .icon-select select option {
+        font-size: 0.9rem;
+        color: var(--text);
+    }
+
+    .icon-select i {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .icon-select {
+        flex: 0 0 44px;
+        min-width: 44px;
+        max-width: 44px;
+        height: 44px;
+    }
+
+    .controls-bar button {
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        border-radius: 50%;
+        flex: 0 0 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-label {
+        display: none;
     }
 
     .controls input,
@@ -706,24 +1101,28 @@ select {
         font-size: 0.95rem;
     }
 
-    /* Stack destination cards vertically */
     .destination {
-        flex-wrap: wrap;
         padding: 10px 12px;
-        gap: 4px 10px;
     }
 
-    .destination a {
-        flex: 1 1 100%;
+    .dest-row-top a {
         font-size: 0.95rem;
         min-height: 44px;
         display: flex;
         align-items: center;
     }
 
-    .icons {
-        margin-left: 0;
-        font-size: 0.8rem;
+    .dest-actions {
+        gap: 12px;
+        font-size: 0.95rem;
+    }
+
+    .dest-actions > i {
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     /* Compact pagination labels */
